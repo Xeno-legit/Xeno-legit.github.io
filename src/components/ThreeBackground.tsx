@@ -59,7 +59,7 @@ export default function ThreeBackground() {
       
       void main() {
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = size * (800.0 / -mvPosition.z);
+        gl_PointSize = size * (200.0 / -mvPosition.z);
         gl_Position = projectionMatrix * mvPosition;
         
         // Twinkle based on position hash
@@ -121,9 +121,6 @@ export default function ThreeBackground() {
     nebula2.rotation.z = -0.5;
     scene.add(nebula2);
 
-    // TEST CUBE
-    const box = new THREE.Mesh(new THREE.BoxGeometry(100, 100, 100), new THREE.MeshBasicMaterial({color: 0xff0000}));
-    scene.add(box);
 
 
     // ── Mouse tracking ──
