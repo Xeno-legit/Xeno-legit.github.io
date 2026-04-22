@@ -22,7 +22,7 @@ export default function ThreeBackground() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x050505, 1);
+    renderer.setClearColor(0x000000, 0);
 
     // ── Stars ──
     const STAR_COUNT = 2500;
@@ -59,13 +59,13 @@ export default function ThreeBackground() {
       
       void main() {
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = size * (200.0 / -mvPosition.z);
+        gl_PointSize = size * (800.0 / -mvPosition.z);
         gl_Position = projectionMatrix * mvPosition;
         
         // Twinkle based on position hash
         float phase = position.x * 0.01 + position.y * 0.013 + position.z * 0.007;
         float speed = 0.4 + fract(sin(phase * 43758.5453) * 1000.0) * 1.2;
-        vAlpha = 0.3 + 0.7 * (0.5 + 0.5 * sin(uTime * speed + phase));
+        vAlpha = 0.6 + 0.4 * sin(uTime * speed + phase);
       }
     `;
 
@@ -120,6 +120,11 @@ export default function ThreeBackground() {
     nebula2.position.z = -100;
     nebula2.rotation.z = -0.5;
     scene.add(nebula2);
+
+    // TEST CUBE
+    const box = new THREE.Mesh(new THREE.BoxGeometry(100, 100, 100), new THREE.MeshBasicMaterial({color: 0xff0000}));
+    scene.add(box);
+
 
     // ── Mouse tracking ──
     const handleMouseMove = (e: MouseEvent) => {
@@ -183,7 +188,7 @@ export default function ThreeBackground() {
         left: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: 'none',
       }}
     />
