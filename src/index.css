@@ -8,10 +8,14 @@
 }
 
 /* ─── Base ─── */
-html, body {
+html {
+  filter: contrast(100%) brightness(110%) grayscale(0.4);
+}
+
+body {
   scroll-behavior: smooth;
   background-color: #050505;
-  color: #e4e4e7;
+  color: #ffffff;
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
@@ -28,139 +32,34 @@ html, body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-/* ─── VHS Effects ─── */
-.vhs-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.vhs-noise {
-  position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 150px 150px;
-  opacity: 0.12;
-  mix-blend-mode: overlay;
-  animation: vhs-noise-anim 0.2s infinite steps(2);
-}
-
-@keyframes vhs-noise-anim {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-2%, -2%); }
-  40% { transform: translate(2%, -4%); }
-  60% { transform: translate(-2%, 4%); }
-  80% { transform: translate(4%, 2%); }
-  100% { transform: translate(0, 0); }
-}
-
-.vhs-scanlines {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, 0.25) 51%
-  );
-  background-size: 100% 4px;
-  mix-blend-mode: multiply;
-  opacity: 0.6;
-}
-
-.vhs-tracking {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, 0.05) 10%,
-    rgba(255, 255, 255, 0.1) 20%,
-    rgba(0, 0, 0, 0.2) 25%,
-    transparent 30%
-  );
-  background-size: 100% 100vh;
-  animation: vhs-tracking-anim 6s infinite linear;
-  mix-blend-mode: overlay;
-  opacity: 0.7;
-}
-
-@keyframes vhs-tracking-anim {
-  0% { background-position: 0 -100vh; }
-  100% { background-position: 0 100vh; }
-}
-
-.vhs-color-bleed {
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 4px 0 10px rgba(255, 0, 0, 0.1), inset -4px 0 10px rgba(0, 0, 255, 0.1);
-  mix-blend-mode: screen;
-}
-
-.vhs-vignette {
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
-}
-
-.vhs-text {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 0 0 #f00, -2px 0 0 #00f;
-  animation: vhs-text-blink 2s infinite;
-}
-
-@keyframes vhs-text-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.vhs-glitch-effect {
-  animation: vhs-global-glitch 10s infinite;
-}
-
-@keyframes vhs-global-glitch {
-  0%, 96%, 100% { transform: translateX(0); opacity: 1; filter: hue-rotate(0deg); }
-  97% { transform: translateX(-5px); opacity: 0.9; filter: hue-rotate(90deg); }
-  98% { transform: translateX(5px); opacity: 0.8; filter: hue-rotate(-90deg); }
-  99% { transform: translateX(-2px); opacity: 0.9; filter: hue-rotate(45deg); }
-}
-
-/* ─── Chromatic Aberration Utility ─── */
+/* ─── Utilities ─── */
 .chromatic {
   text-shadow:
-    -2px 0 rgba(255, 100, 100, 0.25),
-    2px 0 rgba(100, 200, 255, 0.25);
+    -2px 0 rgba(255, 100, 100, 0.4),
+    2px 0 rgba(100, 200, 255, 0.4);
 }
 
 .chromatic-strong {
   text-shadow:
-    -3px 0 rgba(255, 100, 100, 0.35),
-    3px 0 rgba(100, 200, 255, 0.35);
+    -3px 0 rgba(255, 0, 0, 0.5),
+    3px 0 rgba(0, 0, 255, 0.5),
+    0 0 2px rgba(204, 204, 204, 0.1);
 }
 
-/* ─── Phosphor Glow Utilities ─── */
 .glow-silver {
   text-shadow:
     0 0 10px rgba(200, 200, 210, 0.3),
@@ -181,7 +80,6 @@ html, body {
     inset 0 0 30px rgba(200, 200, 210, 0.02);
 }
 
-/* ─── Monitor Bezel ─── */
 .monitor-frame {
   position: relative;
   border: 3px solid #1a1a1a;
@@ -195,19 +93,15 @@ html, body {
   overflow: hidden;
 }
 
-/* ─── Silver Separator Line ─── */
 .silver-line {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(180, 180, 190, 0.2) 20%,
-    rgba(200, 200, 210, 0.5) 50%,
-    rgba(180, 180, 190, 0.2) 80%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(180, 180, 190, 0.2) 20%,
+      rgba(200, 200, 210, 0.5) 50%,
+      rgba(180, 180, 190, 0.2) 80%,
+      transparent 100%);
 }
 
-/* ─── Animated Shimmer on Lines ─── */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -220,24 +114,461 @@ html, body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(220, 220, 230, 0.2) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(220, 220, 230, 0.2) 50%,
+      transparent 100%);
   animation: shimmer-move 4s ease-in-out infinite;
 }
 
 @keyframes shimmer-move {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
-/* ─── Glass Panel ─── */
 .glass-panel {
   background: rgba(15, 15, 15, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(200, 200, 210, 0.1);
 }
 
+
+/* 
+ * ══════════════════════════════════════════════════
+ *   CRT CURVED SCREEN + VHS EFFECTS
+ * ══════════════════════════════════════════════════
+ */
+
+:root {
+  --vhs-z: 999999;
+}
+
+/* ── CRT CURVED SCREEN BEZEL — simulates the rounded glass of a CRT tube ── */
+.crt-screen {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 10);
+  pointer-events: none;
+}
+
+/* ── 1. FILM GRAIN — coarse analog noise ── */
+.vhs-grain {
+  position: fixed;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: var(--vhs-z);
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  animation: vhs-grain-jitter 0.08s infinite steps(1);
+  mix-blend-mode: overlay;
+}
+
+@keyframes vhs-grain-jitter {
+  0% {
+    transform: translate(0, 0) scale(1.03);
+  }
+
+  25% {
+    transform: translate(-3%, 2%) scale(1.03);
+  }
+
+  50% {
+    transform: translate(2%, -3%) scale(1.03);
+  }
+
+  75% {
+    transform: translate(-1%, -2%) scale(1.03);
+  }
+
+  100% {
+    transform: translate(3%, 1%) scale(1.03);
+  }
+}
+
+/* ── 2. SCANLINES — CRT electron gun lines ── */
+.vhs-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 1);
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.12) 2px,
+      rgba(0, 0, 0, 0.12) 4px);
+  animation: scanline-roll 8s linear infinite;
+}
+
+@keyframes scanline-roll {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 100vh;
+  }
+}
+
+/* ── 3. TRACKING BAND — thick bar rolling through ── */
+.vhs-tracking {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: calc(var(--vhs-z) + 2);
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.03) 20%,
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(255, 255, 255, 0.06) 55%,
+      rgba(255, 255, 255, 0.03) 80%,
+      transparent 100%);
+  filter: blur(2px);
+  animation: vhs-tracking-roll 7s linear infinite;
+}
+
+@keyframes vhs-tracking-roll {
+  0% {
+    top: -60px;
+    opacity: 0;
+  }
+
+  3% {
+    opacity: 1;
+  }
+
+  20% {
+    top: 110%;
+    opacity: 1;
+  }
+
+  21% {
+    opacity: 0;
+  }
+
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* ── 4. COLOR BLEED — RGB drift from worn tape heads ── */
+.vhs-bleed {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 3);
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(255, 0, 50, 0.015) 25%,
+      transparent 30%,
+      rgba(0, 100, 255, 0.02) 60%,
+      transparent 65%,
+      rgba(0, 255, 100, 0.01) 85%,
+      transparent 100%);
+  animation: vhs-color-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes vhs-color-drift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(30px);
+  }
+}
+
+/* ── 5. CRT VIGNETTE — dark curved tube edges ── */
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 4);
+  pointer-events: none;
+  border-radius: 18px;
+  background: radial-gradient(ellipse 70% 65% at 50% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.12) 55%,
+      rgba(0, 0, 0, 0.45) 80%,
+      rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* ── 6. BOTTOM JITTER — unstable bottom edge ── */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  z-index: calc(var(--vhs-z) + 5);
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.7);
+  animation: vhs-bottom-shake 0.3s infinite steps(2);
+}
+
+@keyframes vhs-bottom-shake {
+  0% {
+    height: 4px;
+  }
+
+  50% {
+    height: 8px;
+  }
+
+  100% {
+    height: 5px;
+  }
+}
+
+/* ── 7. HORIZONTAL TEAR — glitch line ── */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  top: 45%;
+  z-index: calc(var(--vhs-z) + 6);
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 -1px 0 rgba(255, 0, 0, 0.08),
+    0 1px 0 rgba(0, 200, 255, 0.08);
+  animation: vhs-h-tear 4s ease-in-out infinite;
+}
+
+@keyframes vhs-h-tear {
+  0% {
+    top: 15%;
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  8% {
+    opacity: 0.6;
+  }
+
+  12% {
+    opacity: 0.6;
+    transform: translateX(-2px);
+  }
+
+  14% {
+    opacity: 0;
+  }
+
+  40% {
+    top: 70%;
+    opacity: 0;
+  }
+
+  48% {
+    opacity: 0.4;
+    transform: translateX(3px);
+  }
+
+  52% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+/* ── 8. SCREEN FLICKER — subtle brightness oscillation ── */
+.vhs-screen-flicker {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 7);
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.015);
+  animation: vhs-screen-pulse 0.1s infinite steps(3);
+}
+
+@keyframes vhs-screen-pulse {
+  0% {
+    opacity: 0.3;
+  }
+
+  33% {
+    opacity: 0.8;
+  }
+
+  66% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* ── 9. CRT PHOSPHOR MASK (From obs-retro-effects) — RGB Subpixels ── */
+.crt-phosphor {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--vhs-z) + 8);
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      rgba(255, 0, 0, 0.06) 0%,
+      rgba(255, 0, 0, 0.06) 33.3%,
+      rgba(0, 255, 0, 0.04) 33.3%,
+      rgba(0, 255, 0, 0.04) 66.6%,
+      rgba(0, 0, 255, 0.06) 66.6%,
+      rgba(0, 0, 255, 0.06) 100%);
+  background-size: 3px 100%;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+/* Hide unused legacy classes */
+.crt-grain,
+.crt-scanlines,
+.crt-glitch,
+.vhs-tracking-bar,
+.vhs-bottom-jitter,
+.vhs-overlay,
+.vhs-scanlines-overlay,
+.vhs-tracking-band,
+.vhs-color-bleed {
+  display: none !important;
+}
+
+
+/* 
+ * ══════════════════════════════════════════════════
+ *   POWER BUTTON
+ * ══════════════════════════════════════════════════
+ */
+
+.power-button {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #111 0%, #0a0a0a 70%, #000 100%);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.power-button::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.06) 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.04) 75%,
+      transparent 100%);
+  animation: power-ring-rotate 6s linear infinite;
+}
+
+@keyframes power-ring-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.power-icon {
+  color: rgba(255, 255, 255, 0.25);
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 0px transparent);
+}
+
+.power-button:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 60px rgba(200, 210, 230, 0.1),
+    0 0 120px rgba(200, 210, 230, 0.05),
+    inset 0 0 30px rgba(200, 210, 230, 0.03);
+}
+
+.power-button:hover .power-icon {
+  color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 12px rgba(200, 210, 230, 0.5));
+}
+
+.power-button:active {
+  transform: scale(0.95);
+}
+
+
+/* 
+ * ══════════════════════════════════════════════════
+ *   CRT BOOT-UP ANIMATION
+ * ══════════════════════════════════════════════════
+ */
+
+.crt-boot-sequence {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  animation: crt-boot 1.4s ease-out forwards;
+  background: radial-gradient(ellipse 100% 1px at 50% 50%,
+      rgba(200, 220, 255, 0.8) 0%,
+      rgba(150, 180, 220, 0.3) 30%,
+      transparent 70%);
+}
+
+@keyframes crt-boot {
+  0% {
+    background: radial-gradient(ellipse 100% 1px at 50% 50%,
+        rgba(200, 220, 255, 0.9) 0%,
+        rgba(150, 180, 220, 0.3) 30%,
+        transparent 70%);
+  }
+
+  30% {
+    background: radial-gradient(ellipse 100% 4px at 50% 50%,
+        rgba(200, 220, 255, 1) 0%,
+        rgba(150, 180, 220, 0.5) 30%,
+        transparent 60%);
+  }
+
+  60% {
+    background: radial-gradient(ellipse 110% 40% at 50% 50%,
+        rgba(200, 220, 255, 0.3) 0%,
+        rgba(100, 130, 170, 0.1) 40%,
+        transparent 70%);
+  }
+
+  100% {
+    background: radial-gradient(ellipse 120% 120% at 50% 50%,
+        rgba(100, 130, 170, 0.05) 0%,
+        transparent 50%);
+    opacity: 0;
+  }
+}  
+/* --- Hero Boot-up Sequence --- */  
+.crt-power-line { width: 100%; height: 2px; background: #ffffff; box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff; animation: power-line-blink 0.1s infinite alternate; }  
+@keyframes power-line-blink { from { opacity: 0.8; transform: scaleY(1); } to { opacity: 1; transform: scaleY(1.5); } }  
+.crt-phosphor-expand { width: 100%; height: 100%; background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(200, 220, 255, 0.2) 0%, rgba(150, 180, 220, 0.05) 40%, transparent 70%); animation: phosphor-grow 0.8s ease-out forwards; }  
+@keyframes phosphor-grow { 0% { transform: scale(0.1, 0.001); opacity: 0; } 20% { transform: scale(1, 0.001); opacity: 1; } 100% { transform: scale(1, 1); opacity: 0.3; } } 

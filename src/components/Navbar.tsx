@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import movingVideoSrc from '@/Moving.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,14 +18,26 @@ export default function Navbar() {
       .to('.nav-link', { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' }, '-=0.5');
   }, { scope: navRef });
 
+  const handleLinkClick = () => {
+    window.dispatchEvent(
+      new CustomEvent('play-video', {
+        detail: {
+          src: movingVideoSrc,
+          duration: 1000,
+        },
+      })
+    );
+  };
+
   return (
     <nav
       ref={navRef}
-      className="fixed w-full top-0 z-50 px-8 py-5 flex justify-between items-center"
+      className="absolute left-1/2 -translate-x-1/2 w-[calc(100%-8rem)] top-20 z-50 px-8 py-5 flex justify-between items-center rounded-2xl"
       style={{
-        background: 'rgba(5, 5, 5, 0.7)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(200, 200, 210, 0.06)',
+        background: 'rgba(10, 10, 12, 0.4)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(200, 200, 210, 0.08)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
       }}
     >
       {/* Logo */}
@@ -43,6 +56,7 @@ export default function Navbar() {
           <a
             key={i}
             href={label === 'Projects' ? '#projects' : label === 'Contact me' ? '#contact' : '#cv'}
+            onClick={handleLinkClick}
             className="nav-link relative group"
             style={{ color: '#999' }}
           >

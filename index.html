@@ -11,6 +11,16 @@
 
 <body>
     <div id="root"></div>
+    <svg style="position: absolute; pointer-events: none; width: 0; height: 0; overflow: hidden;">
+        <filter id="vhs-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="noise" />
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.06" />
+            </feComponentTransfer>
+            <feBlend mode="screen" in="SourceGraphic" in2="noise" />
+        </filter>
+    </svg>
     <script type="module" src="/src/main.tsx"></script>
 </body>
 

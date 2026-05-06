@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Columns, Database } from 'lucide-react';
+import errorVideoSrc from '@/ERROR.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,6 +108,16 @@ interface ProjectItemProps {
 }
 
 function ProjectItem({ icon, title, shortDesc, fullDesc }: ProjectItemProps) {
+  const handleViewProjectClick = () => {
+    window.dispatchEvent(
+      new CustomEvent('play-video', {
+        detail: {
+          src: errorVideoSrc,
+        },
+      })
+    );
+  };
+
   return (
     <div 
       className="flex flex-col items-center gap-8 p-12 md:p-16 rounded-3xl glass-panel text-center backdrop-blur-2xl relative overflow-hidden"
@@ -143,6 +154,7 @@ function ProjectItem({ icon, title, shortDesc, fullDesc }: ProjectItemProps) {
       </p>
 
       <button
+        onClick={handleViewProjectClick}
         className="project-btn mt-6 px-10 py-4 font-mono text-sm tracking-[0.2em] uppercase rounded transition-all duration-300 relative overflow-hidden group"
         style={{
           color: '#ffffff',
