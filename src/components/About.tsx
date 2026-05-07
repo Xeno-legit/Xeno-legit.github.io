@@ -21,21 +21,14 @@ function Typewriter({ text, delay = 0 }: { text: string; delay?: number }) {
     const int = setInterval(() => {
       setDisplayed(text.substring(0, i + 1));
       i++;
-      if (i >= text.length) {
-        clearInterval(int);
-        setDone(true);
-      }
+      if (i >= text.length) { clearInterval(int); setDone(true); }
     }, 35);
     return () => clearInterval(int);
   }, [text, started]);
 
   return (
-    <span>
-      {displayed}
-      <span
-        className={`font-bold ${done ? 'animate-pulse' : ''}`}
-        style={{ color: '#888' }}
-      >
+    <span>{displayed}
+      <span className={`font-bold ${done ? 'retro-blink' : ''}`} style={{ color: '#00f0ff' }}>
         {done ? '█' : '▌'}
       </span>
     </span>
@@ -47,112 +40,147 @@ export default function About() {
   const [typewriterActive, setTypewriterActive] = useState(false);
 
   useGSAP(() => {
-    // Initial hidden states
-    gsap.set('.about-terminal', { opacity: 0, y: 40 });
-    gsap.set('.about-divider', { height: 0, opacity: 0 });
-    gsap.set('.about-image', { opacity: 0, x: 50 });
+    gsap.set('.about-monitor', { opacity: 0, y: 60, rotateX: 5 });
+    gsap.set('.about-stats', { opacity: 0, y: 30 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        end: 'center 40%',
-        scrub: false,
-        once: true,
-        onEnter: () => {
-          // Start typewriter only when section enters view
-          setTimeout(() => setTypewriterActive(true), 800);
-        },
+        trigger: sectionRef.current, start: 'top 70%', scrub: false, once: true,
+        onEnter: () => setTimeout(() => setTypewriterActive(true), 800),
       },
     });
 
-    tl.to('.about-terminal', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-      .to('.about-divider', { height: 280, opacity: 1, duration: 1.2, ease: 'power2.inOut' }, '-=0.6')
-      .to('.about-image', { opacity: 1, x: 0, duration: 1, ease: 'power2.out' }, '-=0.8');
+    tl.to('.about-monitor', { opacity: 1, y: 0, rotateX: 0, duration: 1.2, ease: 'power3.out' })
+      .to('.about-stats', { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out' }, '-=0.5');
   }, { scope: sectionRef });
+
+  const stats = [
+    { label: 'EXPERIENCE', value: '6+', unit: 'YRS' },
+    { label: 'PROJECTS', value: '40+', unit: 'BUILT' },
+    { label: 'STACK', value: 'TS', unit: 'REACT' },
+  ];
 
   return (
     <section ref={sectionRef} className="relative py-32 px-8 overflow-hidden">
-      {/* Top separator */}
       <div className="silver-line shimmer w-full h-[1px] mb-20" />
 
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Left: Terminal bio */}
-        <div className="about-terminal w-full md:w-2/3">
-          <div
-            className="glass-panel rounded-lg p-8 relative"
-            style={{ border: '1px solid rgba(200,200,210,0.08)' }}
-          >
-            {/* Terminal header bar */}
-            <div className="flex items-center gap-2 mb-6 pb-4" style={{ borderBottom: '1px solid rgba(200,200,210,0.06)' }}>
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#333' }} />
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#333' }} />
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#333' }} />
-              <span className="ml-3 font-mono text-[10px] tracking-wider uppercase" style={{ color: '#555' }}>
-                terminal
+      <div className="max-w-5xl mx-auto">
+        {/* ═══ RETRO MONITOR BEZEL ═══ */}
+        <div className="about-monitor relative"
+          style={{
+            background: 'linear-gradient(145deg, #1a1030 0%, #0d0520 50%, #0a0318 100%)',
+            borderRadius: '16px',
+            padding: '6px',
+            boxShadow: '0 0 80px rgba(0,0,0,0.6), 0 0 2px rgba(0,240,255,0.1), inset 0 1px 0 rgba(255,255,255,0.03)',
+          }}>
+
+          {/* Monitor brand label */}
+          <div className="flex items-center justify-between px-6 py-2">
+            <span style={{ fontFamily: '"Press Start 2P", monospace', fontSize: '7px', color: 'rgba(255,45,149,0.3)', letterSpacing: '0.3em' }}>
+              RETROVISION
+            </span>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#ff2d95', boxShadow: '0 0 6px #ff2d95' }} />
+              <span style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '9px', color: 'rgba(0,240,255,0.3)' }}>
+                PWR
               </span>
             </div>
-
-            {/* Terminal content */}
-            <div className="font-mono text-sm leading-relaxed" style={{ color: '#999' }}>
-              <div className="mb-3">
-                <span style={{ color: '#666' }}>guest@portfolio</span>
-                <span style={{ color: '#555' }}>:</span>
-                <span style={{ color: '#777' }}>~</span>
-                <span style={{ color: '#555' }}>$</span>
-                <span className="ml-2 glow-silver" style={{ color: '#bbb' }}>whoami</span>
-              </div>
-              <div className="min-h-[80px]" style={{ color: '#888' }}>
-                {typewriterActive && (
-                  <Typewriter
-                    text="Hello, world! I am a senior frontend engineer dedicated to crafting exceptionally smooth, animated, and performant user interfaces."
-                    delay={200}
-                  />
-                )}
-              </div>
-            </div>
           </div>
-        </div>
 
-        {/* Middle: Silver divider line */}
-        <div
-          className="about-divider hidden md:block w-[1px]"
-          style={{
-            background: 'linear-gradient(to bottom, transparent, rgba(200,200,210,0.3), transparent)',
-            boxShadow: '0 0 8px rgba(200,200,210,0.05)',
-          }}
-        />
-
-        {/* Right: Image placeholder */}
-        <div className="about-image w-full md:w-1/3 flex justify-center md:justify-end">
-          <div
-            className="w-full aspect-square max-w-[320px] glass-panel rounded-lg relative overflow-hidden"
-            style={{
-              border: '1px solid rgba(200,200,210,0.08)',
-            }}
-          >
-            {/* CRT scanline effect over the image area */}
-            <div
-              className="absolute inset-0 z-10 pointer-events-none"
+          {/* Screen area — inner bezel */}
+          <div style={{
+            background: 'rgba(6, 1, 20, 0.95)',
+            borderRadius: '8px',
+            border: '1px solid rgba(0, 240, 255, 0.06)',
+            overflow: 'hidden',
+            position: 'relative',
+          }}>
+            {/* Scanline overlay on screen */}
+            <div className="absolute inset-0 pointer-events-none z-10"
               style={{
-                background: `repeating-linear-gradient(
-                  to bottom,
-                  transparent 0px,
-                  transparent 2px,
-                  rgba(0,0,0,0.1) 2px,
-                  rgba(0,0,0,0.1) 4px
-                )`,
-              }}
-            />
-            {/* Empty placeholder — just a subtle icon/text */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="font-mono text-[10px] tracking-wider uppercase" style={{ color: '#333' }}>
-                  [ image ]
+                background: 'repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px)',
+              }} />
+
+            {/* Screen reflection glare */}
+            <div className="absolute inset-0 pointer-events-none z-10"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.01) 100%)',
+              }} />
+
+            <div className="p-8 md:p-12">
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 mb-6 pb-4"
+                style={{ borderBottom: '1px solid rgba(0, 240, 255, 0.06)' }}>
+                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff2d95', boxShadow: '0 0 4px rgba(255,45,149,0.4)' }} />
+                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#ffb800', boxShadow: '0 0 4px rgba(255,184,0,0.4)' }} />
+                <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#00f0ff', boxShadow: '0 0 4px rgba(0,240,255,0.4)' }} />
+                <span className="ml-3 text-[10px] tracking-wider uppercase"
+                  style={{ color: 'rgba(0, 240, 255, 0.3)', fontFamily: '"Share Tech Mono", monospace' }}>
+                  about://whoami
+                </span>
+              </div>
+
+              {/* Terminal content */}
+              <div style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '14px', lineHeight: '1.8', color: 'rgba(0, 240, 255, 0.6)' }}>
+                <div className="mb-3">
+                  <span style={{ color: '#ff2d95' }}>guest@portfolio</span>
+                  <span style={{ color: 'rgba(0,240,255,0.2)' }}>:</span>
+                  <span style={{ color: '#b537f2' }}>~</span>
+                  <span style={{ color: 'rgba(0,240,255,0.2)' }}>$ </span>
+                  <span className="glow-cyan" style={{ color: '#00f0ff' }}>cat about.txt</span>
+                </div>
+                <div className="min-h-[80px]" style={{ color: 'rgba(238, 232, 255, 0.6)' }}>
+                  {typewriterActive && (
+                    <Typewriter
+                      text="Hello, world! I am a senior frontend engineer dedicated to crafting exceptionally smooth, animated, and performant user interfaces. I specialize in React, TypeScript, and WebGL."
+                      delay={200}
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Monitor bottom strip — knobs / controls */}
+          <div className="flex items-center justify-between px-6 py-3">
+            <div className="flex gap-3">
+              {['BRIGHT', 'CONTRAST', 'COLOR'].map((knob) => (
+                <div key={knob} className="flex items-center gap-1.5">
+                  <div className="w-3 h-3 rounded-full"
+                    style={{ border: '1px solid rgba(0,240,255,0.1)', background: 'rgba(0,240,255,0.03)' }} />
+                  <span style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '7px', color: 'rgba(0,240,255,0.2)', letterSpacing: '0.1em' }}>
+                    {knob}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '8px', color: 'rgba(255,184,0,0.2)' }}>
+              MODEL VHS-2026
+            </span>
+          </div>
+        </div>
+
+        {/* ═══ STATS STRIP ═══ */}
+        <div className="grid grid-cols-3 gap-4 mt-8">
+          {stats.map((s) => (
+            <div key={s.label} className="about-stats text-center py-6 relative"
+              style={{
+                background: 'rgba(11, 4, 32, 0.6)',
+                border: '1px solid rgba(0, 240, 255, 0.06)',
+                borderRadius: '4px',
+              }}>
+              <div style={{ fontFamily: '"Press Start 2P", monospace', fontSize: 'clamp(18px, 3vw, 32px)', color: '#00f0ff',
+                textShadow: '0 0 15px rgba(0,240,255,0.3)' }}>
+                {s.value}
+              </div>
+              <div className="mt-1" style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '9px', color: 'rgba(255,45,149,0.4)', letterSpacing: '0.2em' }}>
+                {s.unit}
+              </div>
+              <div className="mt-1" style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '8px', color: 'rgba(255,255,255,0.15)', letterSpacing: '0.15em' }}>
+                {s.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -92,7 +92,7 @@ export default function App() {
 
       {/* ═══ PHASE 1: POWER SCREEN ═══ */}
       {phase === 'power-screen' && (
-        <div className="fixed inset-0 z-[3000] bg-black flex items-center justify-center">
+        <div className="fixed inset-0 z-[3000] bg-[#0b0420] flex items-center justify-center">
           <button
             onClick={handlePowerOn}
             className="power-button group vhs-flicker"
@@ -118,7 +118,7 @@ export default function App() {
 
       {/* ═══ PHASE 2: INTRO VIDEO ═══ */}
       {phase === 'intro-video' && (
-        <div className="fixed inset-0 z-[3000] bg-black flex items-center justify-center">
+        <div className="fixed inset-0 z-[3000] bg-[#0b0420] flex items-center justify-center">
           <video
             src={introVideoSrc}
             autoPlay
@@ -135,7 +135,7 @@ export default function App() {
 
       {/* ═══ PHASE 3: BOOT-UP ANIMATION ═══ */}
       {phase === 'boot-up' && (
-        <div className="fixed inset-0 z-[3000] bg-black flex items-center justify-center pointer-events-none">
+        <div className="fixed inset-0 z-[3000] bg-[#0b0420] flex items-center justify-center pointer-events-none">
           <div className="crt-boot-sequence" />
         </div>
       )}
@@ -179,15 +179,18 @@ export default function App() {
       <div className="vhs-screen-flicker" />
 
 
+      {/* Synthwave grid background — fixed behind everything */}
+      <ThreeBackground />
+
       {/* Page Content — Simple fade in, CRT lens effect handles the rest */}
       <div
         className={`crt-container relative z-10 ${phase === 'site' ? 'crt-turn-on vhs-flicker vhs-duration-3 crt-curved' : ''}`}
         style={{
           opacity: phase === 'site' ? undefined : 0,
           pointerEvents: phase === 'site' ? 'auto' : 'none',
+          background: 'transparent',
         }}
       >
-        <ThreeBackground />
         <Navbar />
         <Hero introFinished={phase === 'site'} />
         <About />
@@ -198,7 +201,7 @@ export default function App() {
 
       {/* ═══ OVERLAY VIDEOS (Error / Moving) ═══ */}
       {overlayVideo && (
-        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black">
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-[#0b0420]">
           <video
             ref={videoRef}
             key={overlayVideo}

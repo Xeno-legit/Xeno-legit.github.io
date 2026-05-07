@@ -1,107 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════════
+   SYNTHWAVE VHS / CRT RETRO THEME — Complete Overhaul
+   Colors: Hot Pink, Electric Cyan, Amber, Purple
+   ══════════════════════════════════════════════════ */
+
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Syne", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "VT323", monospace;
+  --font-display: "Press Start 2P", monospace;
+  --font-mono: "Share Tech Mono", monospace;
+  --font-pixel: "Silkscreen", monospace;
+  --color-neon-pink: #ff2d95;
+  --color-neon-cyan: #00f0ff;
+  --color-neon-amber: #ffb800;
+  --color-neon-purple: #b537f2;
+  --color-neon-red: #ff3355;
+  --color-neon-blue: #4d6dff;
+  --color-neon-white: #eee8ff;
+  --color-bg-dark: #0b0420;
+  --color-bg-darker: #06011a;
+  --color-vhs-pink: #ff71ce;
+  --color-vhs-teal: #01cdfe;
+  --color-vhs-yellow: #fffb96;
 }
 
 /* ─── Base ─── */
 html {
-  filter: contrast(100%) brightness(110%) grayscale(0.4);
+  filter: contrast(105%) brightness(105%) saturate(1.25);
 }
 
 body {
   scroll-behavior: smooth;
-  background-color: #050505;
-  color: #ffffff;
+  background-color: #0b0420;
+  color: #eee8ff;
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "VT323", monospace;
+  font-size: 18px;
+  line-height: 1.4;
+  cursor: default;
 }
 
 #root {
   min-height: 100vh;
 }
 
-/* ─── Custom Scrollbar ─── */
+/* ─── Custom Scrollbar — Neon Pink ─── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #0b0420;
+  border-left: 1px solid rgba(255, 45, 149, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
+  background: rgba(255, 45, 149, 0.35);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgba(255, 45, 149, 0.55);
 }
 
-/* ─── Utilities ─── */
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+}
+
+/* ══════════════════════════════════════════════════
+   CRT / VHS UTILITY CLASSES
+   ══════════════════════════════════════════════════ */
+
+/* Chromatic aberration — mild */
 .chromatic {
   text-shadow:
-    -2px 0 rgba(255, 100, 100, 0.4),
-    2px 0 rgba(100, 200, 255, 0.4);
+    -2px 0 rgba(255, 45, 149, 0.5),
+    2px 0 rgba(0, 240, 255, 0.5);
 }
 
+/* Chromatic aberration — strong */
 .chromatic-strong {
   text-shadow:
-    -3px 0 rgba(255, 0, 0, 0.5),
-    3px 0 rgba(0, 0, 255, 0.5),
-    0 0 2px rgba(204, 204, 204, 0.1);
+    -3px 0 rgba(255, 45, 149, 0.7),
+    3px 0 rgba(0, 240, 255, 0.7),
+    0 0 4px rgba(181, 55, 242, 0.3);
 }
 
+/* CRT phosphor glow — pink */
+.glow-crt {
+  text-shadow:
+    0 0 8px rgba(255, 45, 149, 0.6),
+    0 0 20px rgba(255, 45, 149, 0.3),
+    0 0 40px rgba(255, 45, 149, 0.1);
+}
+
+/* CRT phosphor glow — amber */
+.glow-amber {
+  text-shadow:
+    0 0 8px rgba(255, 184, 0, 0.6),
+    0 0 20px rgba(255, 184, 0, 0.3),
+    0 0 40px rgba(255, 184, 0, 0.1);
+}
+
+/* CRT phosphor glow — cyan */
+.glow-cyan {
+  text-shadow:
+    0 0 8px rgba(0, 240, 255, 0.6),
+    0 0 20px rgba(0, 240, 255, 0.3),
+    0 0 40px rgba(0, 240, 255, 0.1);
+}
+
+/* Legacy glow classes — remapped to neon pink */
 .glow-silver {
   text-shadow:
-    0 0 10px rgba(200, 200, 210, 0.3),
-    0 0 30px rgba(200, 200, 210, 0.1);
+    0 0 8px rgba(255, 45, 149, 0.4),
+    0 0 20px rgba(255, 45, 149, 0.15);
 }
 
 .glow-silver-strong {
   text-shadow:
-    0 0 15px rgba(200, 200, 210, 0.5),
-    0 0 40px rgba(200, 200, 210, 0.15),
-    0 0 80px rgba(200, 200, 210, 0.05);
+    0 0 12px rgba(255, 45, 149, 0.6),
+    0 0 30px rgba(255, 45, 149, 0.2),
+    0 0 60px rgba(255, 45, 149, 0.08);
 }
 
 .glow-box {
   box-shadow:
-    0 0 15px rgba(200, 200, 210, 0.08),
-    0 0 40px rgba(200, 200, 210, 0.03),
-    inset 0 0 30px rgba(200, 200, 210, 0.02);
+    0 0 10px rgba(181, 55, 242, 0.1),
+    0 0 30px rgba(181, 55, 242, 0.04),
+    inset 0 0 20px rgba(181, 55, 242, 0.02);
 }
 
+/* Retro panel — CRT monitor frame */
 .monitor-frame {
   position: relative;
-  border: 3px solid #1a1a1a;
-  border-radius: 18px;
+  border: 2px solid rgba(0, 240, 255, 0.15);
+  border-radius: 4px;
   box-shadow:
-    0 0 0 1px #222,
-    0 0 60px rgba(0, 0, 0, 0.8),
-    inset 0 0 80px rgba(200, 210, 220, 0.015);
-  background: rgba(5, 5, 5, 0.65);
+    0 0 0 1px rgba(0, 240, 255, 0.05),
+    0 0 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 60px rgba(181, 55, 242, 0.01);
+  background: rgba(6, 1, 26, 0.85);
   backdrop-filter: blur(2px);
   overflow: hidden;
 }
 
+/* Retro separator line */
 .silver-line {
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(180, 180, 190, 0.2) 20%,
-      rgba(200, 200, 210, 0.5) 50%,
-      rgba(180, 180, 190, 0.2) 80%,
+      rgba(255, 45, 149, 0.15) 20%,
+      rgba(0, 240, 255, 0.4) 50%,
+      rgba(255, 45, 149, 0.15) 80%,
       transparent 100%);
 }
 
+/* Shimmer — retro scan sweep */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -116,7 +177,7 @@ body {
   height: 100%;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(220, 220, 230, 0.2) 50%,
+      rgba(0, 240, 255, 0.15) 50%,
       transparent 100%);
   animation: shimmer-move 4s ease-in-out infinite;
 }
@@ -131,24 +192,77 @@ body {
   }
 }
 
+/* Glass panel — retro CRT terminal style */
 .glass-panel {
-  background: rgba(15, 15, 15, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 200, 210, 0.1);
+  background: rgba(11, 4, 40, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  box-shadow: inset 0 0 30px rgba(181, 55, 242, 0.02);
 }
 
+/* Retro blink cursor */
+.retro-blink {
+  animation: blink-cursor 1s step-end infinite;
+}
 
-/* 
- * ══════════════════════════════════════════════════
- *   CRT CURVED SCREEN + VHS EFFECTS
- * ══════════════════════════════════════════════════
- */
+@keyframes blink-cursor {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* VHS timestamp style */
+.vhs-timestamp {
+  font-family: "Share Tech Mono", monospace;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+/* Retro button base */
+.retro-btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.05);
+  color: #00f0ff;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.retro-btn:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 15px rgba(0, 240, 255, 0.05);
+  color: #66f7ff;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.retro-btn:active {
+  transform: scale(0.97);
+  background: rgba(0, 240, 255, 0.2);
+}
+
+/* ══════════════════════════════════════════════════
+   CRT CURVED SCREEN + VHS EFFECTS
+   ══════════════════════════════════════════════════ */
 
 :root {
   --vhs-z: 999999;
 }
 
-/* ── CRT CURVED SCREEN BEZEL — simulates the rounded glass of a CRT tube ── */
+/* ── CRT CURVED SCREEN BEZEL ── */
 .crt-screen {
   position: fixed;
   inset: 0;
@@ -165,7 +279,7 @@ body {
   z-index: var(--vhs-z);
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.07;
+  opacity: 0.08;
   animation: vhs-grain-jitter 0.08s infinite steps(1);
   mix-blend-mode: overlay;
 }
@@ -201,8 +315,8 @@ body {
   background: repeating-linear-gradient(to bottom,
       transparent 0px,
       transparent 2px,
-      rgba(0, 0, 0, 0.12) 2px,
-      rgba(0, 0, 0, 0.12) 4px);
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px);
   animation: scanline-roll 8s linear infinite;
 }
 
@@ -226,10 +340,10 @@ body {
   pointer-events: none;
   background: linear-gradient(to bottom,
       transparent 0%,
-      rgba(255, 255, 255, 0.03) 20%,
-      rgba(255, 255, 255, 0.06) 45%,
-      rgba(255, 255, 255, 0.06) 55%,
-      rgba(255, 255, 255, 0.03) 80%,
+      rgba(181, 55, 242, 0.02) 20%,
+      rgba(181, 55, 242, 0.05) 45%,
+      rgba(181, 55, 242, 0.05) 55%,
+      rgba(181, 55, 242, 0.02) 80%,
       transparent 100%);
   filter: blur(2px);
   animation: vhs-tracking-roll 7s linear infinite;
@@ -266,15 +380,15 @@ body {
   inset: 0;
   z-index: calc(var(--vhs-z) + 3);
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.4;
   mix-blend-mode: screen;
   background: linear-gradient(180deg,
       transparent 0%,
-      rgba(255, 0, 50, 0.015) 25%,
+      rgba(255, 45, 149, 0.02) 25%,
       transparent 30%,
-      rgba(0, 100, 255, 0.02) 60%,
+      rgba(0, 240, 255, 0.025) 60%,
       transparent 65%,
-      rgba(0, 255, 100, 0.01) 85%,
+      rgba(181, 55, 242, 0.015) 85%,
       transparent 100%);
   animation: vhs-color-drift 12s ease-in-out infinite alternate;
 }
@@ -298,9 +412,9 @@ body {
   border-radius: 18px;
   background: radial-gradient(ellipse 70% 65% at 50% 50%,
       transparent 0%,
-      rgba(0, 0, 0, 0.12) 55%,
-      rgba(0, 0, 0, 0.45) 80%,
-      rgba(0, 0, 0, 0.8) 100%);
+      rgba(0, 0, 0, 0.15) 55%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.85) 100%);
 }
 
 /* ── 6. BOTTOM JITTER — unstable bottom edge ── */
@@ -313,7 +427,7 @@ body::after {
   height: 6px;
   z-index: calc(var(--vhs-z) + 5);
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 45, 149, 0.15);
   animation: vhs-bottom-shake 0.3s infinite steps(2);
 }
 
@@ -341,10 +455,10 @@ body::before {
   top: 45%;
   z-index: calc(var(--vhs-z) + 6);
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 240, 255, 0.06);
   box-shadow:
-    0 -1px 0 rgba(255, 0, 0, 0.08),
-    0 1px 0 rgba(0, 200, 255, 0.08);
+    0 -1px 0 rgba(255, 45, 149, 0.1),
+    0 1px 0 rgba(0, 240, 255, 0.1);
   animation: vhs-h-tear 4s ease-in-out infinite;
 }
 
@@ -395,7 +509,7 @@ body::before {
   inset: 0;
   z-index: calc(var(--vhs-z) + 7);
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(181, 55, 242, 0.01);
   animation: vhs-screen-pulse 0.1s infinite steps(3);
 }
 
@@ -417,7 +531,7 @@ body::before {
   }
 }
 
-/* ── 9. CRT PHOSPHOR MASK (From obs-retro-effects) — RGB Subpixels ── */
+/* ── 9. CRT PHOSPHOR MASK — RGB Subpixels ── */
 .crt-phosphor {
   position: fixed;
   inset: 0;
@@ -448,20 +562,17 @@ body::before {
   display: none !important;
 }
 
-
-/* 
- * ══════════════════════════════════════════════════
- *   POWER BUTTON
- * ══════════════════════════════════════════════════
- */
+/* ══════════════════════════════════════════════════
+   POWER BUTTON — Retro CRT Power
+   ══════════════════════════════════════════════════ */
 
 .power-button {
   position: relative;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: radial-gradient(circle, #111 0%, #0a0a0a 70%, #000 100%);
-  border: 2px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle, #110828 0%, #0b0420 70%, #06011a 100%);
+  border: 2px solid rgba(255, 45, 149, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -479,9 +590,9 @@ body::before {
   border-radius: 50%;
   background: conic-gradient(from 0deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.06) 25%,
+      rgba(255, 45, 149, 0.08) 25%,
       transparent 50%,
-      rgba(255, 255, 255, 0.04) 75%,
+      rgba(0, 240, 255, 0.05) 75%,
       transparent 100%);
   animation: power-ring-rotate 6s linear infinite;
 }
@@ -497,34 +608,31 @@ body::before {
 }
 
 .power-icon {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 45, 149, 0.2);
   transition: all 0.4s ease;
   filter: drop-shadow(0 0 0px transparent);
 }
 
 .power-button:hover {
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 45, 149, 0.4);
   box-shadow:
-    0 0 60px rgba(200, 210, 230, 0.1),
-    0 0 120px rgba(200, 210, 230, 0.05),
-    inset 0 0 30px rgba(200, 210, 230, 0.03);
+    0 0 60px rgba(255, 45, 149, 0.1),
+    0 0 120px rgba(255, 45, 149, 0.05),
+    inset 0 0 30px rgba(255, 45, 149, 0.03);
 }
 
 .power-button:hover .power-icon {
-  color: rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 0 12px rgba(200, 210, 230, 0.5));
+  color: rgba(255, 45, 149, 0.8);
+  filter: drop-shadow(0 0 12px rgba(255, 45, 149, 0.5));
 }
 
 .power-button:active {
   transform: scale(0.95);
 }
 
-
-/* 
- * ══════════════════════════════════════════════════
- *   CRT BOOT-UP ANIMATION
- * ══════════════════════════════════════════════════
- */
+/* ══════════════════════════════════════════════════
+   CRT BOOT-UP ANIMATION
+   ══════════════════════════════════════════════════ */
 
 .crt-boot-sequence {
   width: 100%;
@@ -533,42 +641,164 @@ body::before {
   inset: 0;
   animation: crt-boot 1.4s ease-out forwards;
   background: radial-gradient(ellipse 100% 1px at 50% 50%,
-      rgba(200, 220, 255, 0.8) 0%,
-      rgba(150, 180, 220, 0.3) 30%,
+      rgba(0, 240, 255, 0.9) 0%,
+      rgba(0, 240, 255, 0.3) 30%,
       transparent 70%);
 }
 
 @keyframes crt-boot {
   0% {
     background: radial-gradient(ellipse 100% 1px at 50% 50%,
-        rgba(200, 220, 255, 0.9) 0%,
-        rgba(150, 180, 220, 0.3) 30%,
+        rgba(0, 240, 255, 1) 0%,
+        rgba(0, 240, 255, 0.3) 30%,
         transparent 70%);
   }
 
   30% {
     background: radial-gradient(ellipse 100% 4px at 50% 50%,
-        rgba(200, 220, 255, 1) 0%,
-        rgba(150, 180, 220, 0.5) 30%,
+        rgba(0, 240, 255, 1) 0%,
+        rgba(0, 240, 255, 0.5) 30%,
         transparent 60%);
   }
 
   60% {
     background: radial-gradient(ellipse 110% 40% at 50% 50%,
-        rgba(200, 220, 255, 0.3) 0%,
-        rgba(100, 130, 170, 0.1) 40%,
+        rgba(181, 55, 242, 0.3) 0%,
+        rgba(181, 55, 242, 0.1) 40%,
         transparent 70%);
   }
 
   100% {
     background: radial-gradient(ellipse 120% 120% at 50% 50%,
-        rgba(100, 130, 170, 0.05) 0%,
+        rgba(181, 55, 242, 0.05) 0%,
         transparent 50%);
     opacity: 0;
   }
-}  
-/* --- Hero Boot-up Sequence --- */  
-.crt-power-line { width: 100%; height: 2px; background: #ffffff; box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff; animation: power-line-blink 0.1s infinite alternate; }  
-@keyframes power-line-blink { from { opacity: 0.8; transform: scaleY(1); } to { opacity: 1; transform: scaleY(1.5); } }  
-.crt-phosphor-expand { width: 100%; height: 100%; background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(200, 220, 255, 0.2) 0%, rgba(150, 180, 220, 0.05) 40%, transparent 70%); animation: phosphor-grow 0.8s ease-out forwards; }  
-@keyframes phosphor-grow { 0% { transform: scale(0.1, 0.001); opacity: 0; } 20% { transform: scale(1, 0.001); opacity: 1; } 100% { transform: scale(1, 1); opacity: 0.3; } } 
+}
+
+/* --- Hero Boot-up Sequence --- */
+.crt-power-line {
+  width: 100%;
+  height: 2px;
+  background: #00f0ff;
+  box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff, 0 0 60px rgba(0, 240, 255, 0.5);
+  animation: power-line-blink 0.1s infinite alternate;
+}
+
+@keyframes power-line-blink {
+  from {
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1.5);
+  }
+}
+
+.crt-phosphor-expand {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%,
+      rgba(181, 55, 242, 0.2) 0%,
+      rgba(181, 55, 242, 0.05) 40%,
+      transparent 70%);
+  animation: phosphor-grow 0.8s ease-out forwards;
+}
+
+@keyframes phosphor-grow {
+  0% {
+    transform: scale(0.1, 0.001);
+    opacity: 0;
+  }
+
+  20% {
+    transform: scale(1, 0.001);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    opacity: 0.3;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   VHS FLICKER ANIMATION CLASSES
+   ══════════════════════════════════════════════════ */
+
+.vhs-flicker {
+  animation: vhs-flicker-anim 0.15s infinite;
+}
+
+@keyframes vhs-flicker-anim {
+  0% { opacity: 0.97; }
+  10% { opacity: 0.95; }
+  20% { opacity: 0.98; }
+  30% { opacity: 0.96; }
+  40% { opacity: 0.99; }
+  50% { opacity: 0.97; }
+  60% { opacity: 0.95; }
+  70% { opacity: 0.98; }
+  80% { opacity: 0.96; }
+  90% { opacity: 0.99; }
+  100% { opacity: 0.97; }
+}
+
+.vhs-duration-3 {
+  animation-duration: 3s;
+}
+
+/* ══════════════════════════════════════════════════
+   FORM INPUT STYLES — Retro Terminal
+   ══════════════════════════════════════════════════ */
+
+input,
+textarea {
+  font-family: "VT323", monospace;
+  font-size: 18px;
+  caret-color: #00f0ff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 240, 255, 0.2);
+  font-family: "VT323", monospace;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* ══════════════════════════════════════════════════
+   RETRO ANIMATIONS
+   ══════════════════════════════════════════════════ */
+
+@keyframes text-glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes crt-line-scroll {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+/* Scanline that moves across content */
+.retro-scanline {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.05);
+  animation: crt-line-scroll 4s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
