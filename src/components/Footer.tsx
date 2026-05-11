@@ -31,25 +31,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Right — social links */}
-        <div className="flex gap-6" style={{ fontFamily: '"Share Tech Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          {['GitHub', 'LinkedIn'].map((label) => (
-            <a key={label} href="#"
-              className="relative group transition-all duration-300"
-              style={{ color: 'rgba(0, 240, 255, 0.3)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#00f0ff';
-                e.currentTarget.style.textShadow = '0 0 10px rgba(0,240,255,0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgba(0, 240, 255, 0.3)';
-                e.currentTarget.style.textShadow = 'none';
-              }}>
-              {label}
-              <span className="absolute bottom-[-3px] left-0 h-[1px] w-0 group-hover:w-full transition-all duration-500 ease-out"
-                style={{ background: 'linear-gradient(90deg, #ff2d95, #00f0ff)' }} />
-            </a>
-          ))}
+        {/* Right — empty or other info */}
+        <div className="flex gap-6 invisible md:visible opacity-0">
+          {/* Links removed as per request */}
         </div>
       </div>
     </footer>

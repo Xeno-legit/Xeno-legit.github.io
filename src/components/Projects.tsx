@@ -175,23 +175,30 @@ function VHSTapeCard({ icon, title, tapeLabel, tapeColor, shortDesc, fullDesc, t
 
             {/* View button */}
             <button onClick={handleViewProjectClick}
-              className="mt-4 self-start px-8 py-3 text-[9px] tracking-[0.2em] uppercase relative overflow-hidden group transition-all duration-300"
+              className="mt-4 self-start px-8 py-3 text-[9px] tracking-[0.2em] uppercase relative overflow-hidden group transition-all duration-100 active:translate-y-1"
               style={{
                 fontFamily: '"Press Start 2P", monospace',
-                color: tapeColor, border: `1px solid ${tapeColor}44`, background: `${tapeColor}08`,
-                textShadow: `0 0 8px ${tapeColor}44`,
+                color: '#0b0420', 
+                border: '3px solid #0b0420', 
+                background: tapeColor,
+                borderRadius: '2px',
+                boxShadow: `inset 4px 4px 0 rgba(255,255,255,0.5), inset -4px -4px 0 rgba(0,0,0,0.3), 0 5px 0 #0b0420`,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = tapeColor;
-                e.currentTarget.style.color = '#0b0420';
-                e.currentTarget.style.boxShadow = `0 0 25px ${tapeColor}44`;
-                e.currentTarget.style.textShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = `inset 4px 4px 0 rgba(255,255,255,0.5), inset -4px -4px 0 rgba(0,0,0,0.3), 0 8px 0 #0b0420, 0 10px 20px ${tapeColor}33`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = `${tapeColor}08`;
-                e.currentTarget.style.color = tapeColor;
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.textShadow = `0 0 8px ${tapeColor}44`;
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = `inset 4px 4px 0 rgba(255,255,255,0.5), inset -4px -4px 0 rgba(0,0,0,0.3), 0 5px 0 #0b0420`;
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(4px)';
+                e.currentTarget.style.boxShadow = `inset 2px 2px 0 rgba(255,255,255,0.5), inset -2px -2px 0 rgba(0,0,0,0.3), 0 1px 0 #0b0420`;
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = `inset 4px 4px 0 rgba(255,255,255,0.5), inset -4px -4px 0 rgba(0,0,0,0.3), 0 8px 0 #0b0420, 0 10px 20px ${tapeColor}33`;
               }}>
               <span className="relative z-10 font-bold">▸ View Project</span>
             </button>

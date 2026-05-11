@@ -177,6 +177,14 @@
     min-height: 100vh;
     background: transparent;
     position: relative;
+
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.crt-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Simulate the curved glass of a CRT tube with reflections and depth */

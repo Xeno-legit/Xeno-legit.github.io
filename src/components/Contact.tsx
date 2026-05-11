@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Github, Linkedin } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -61,8 +62,9 @@ export default function Contact() {
                 ● Online — Open for opportunities
               </span>
             </div>
+
+            </div>
           </div>
-        </div>
 
         {/* Form — BBS terminal style */}
         <div className="contact-form-wrapper">
@@ -135,28 +137,101 @@ export default function Contact() {
               </div>
 
               <button type="button"
-                className="w-full py-4 transition-all duration-300"
+                className="w-full py-4 transition-all duration-100 active:translate-y-1"
                 style={{
                   fontFamily: '"Press Start 2P", monospace', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase',
-                  color: '#ff2d95', border: '1px solid rgba(255,45,149,0.25)', background: 'rgba(255,45,149,0.05)',
-                  borderRadius: '3px', textShadow: '0 0 8px rgba(255,45,149,0.3)',
+                  color: '#0b0420', 
+                  background: '#ff2d95',
+                  border: '3px solid #0b0420',
+                  borderRadius: '2px',
+                  boxShadow: 'inset 4px 4px 0 #ff70c0, inset -4px -4px 0 #801040, 0 6px 0 #0b0420',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#ff2d95';
-                  e.currentTarget.style.color = '#0b0420';
-                  e.currentTarget.style.boxShadow = '0 0 30px rgba(255,45,149,0.3)';
-                  e.currentTarget.style.textShadow = 'none';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = 'inset 4px 4px 0 #ff70c0, inset -4px -4px 0 #801040, 0 8px 0 #0b0420, 0 10px 20px rgba(255, 45, 149, 0.2)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,45,149,0.05)';
-                  e.currentTarget.style.color = '#ff2d95';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.textShadow = '0 0 8px rgba(255,45,149,0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'inset 4px 4px 0 #ff70c0, inset -4px -4px 0 #801040, 0 6px 0 #0b0420';
+                }}
+                onMouseDown={(e) => {
+                  e.currentTarget.style.transform = 'translateY(4px)';
+                  e.currentTarget.style.boxShadow = 'inset 2px 2px 0 #ff70c0, inset -2px -2px 0 #801040, 0 2px 0 #0b0420';
+                }}
+                onMouseUp={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = 'inset 4px 4px 0 #ff70c0, inset -4px -4px 0 #801040, 0 8px 0 #0b0420, 0 10px 20px rgba(255, 45, 149, 0.2)';
                 }}>
                 ▸ SEND TRANSMISSION
               </button>
             </form>
           </div>
+        </div>
+
+        {/* ═══ ARCADE SOCIAL BUTTONS ═══ */}
+        <div className="flex justify-center gap-10 mt-20">
+          {[
+            { id: 'github', icon: Github, color: '#00f0ff', light: '#70ffff', dark: '#006070', link: 'https://github.com/Xeno-legit' },
+            { id: 'linkedin', icon: Linkedin, color: '#ff2d95', light: '#ff70c0', dark: '#801040', link: '#' }
+          ].map((btn) => (
+            <a
+              key={btn.id}
+              href={btn.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center justify-center w-16 h-16 transition-all duration-100 ease-out active:translate-y-1"
+              style={{
+                background: btn.color,
+                borderRadius: '2px',
+                border: '3px solid #0b0420',
+                boxShadow: `
+                  inset 4px 4px 0 ${btn.light},
+                  inset -4px -4px 0 ${btn.dark},
+                  0 6px 0 #0b0420
+                `,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = `
+                  inset 4px 4px 0 ${btn.light},
+                  inset -4px -4px 0 ${btn.dark},
+                  0 10px 0 #0b0420,
+                  0 15px 30px rgba(0,0,0,0.5)
+                `;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = `
+                  inset 4px 4px 0 ${btn.light},
+                  inset -4px -4px 0 ${btn.dark},
+                  0 6px 0 #0b0420
+                `;
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(4px)';
+                e.currentTarget.style.boxShadow = `
+                  inset 2px 2px 0 ${btn.light},
+                  inset -2px -2px 0 ${btn.dark},
+                  0 2px 0 #0b0420
+                `;
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = `
+                  inset 4px 4px 0 ${btn.light},
+                  inset -4px -4px 0 ${btn.dark},
+                  0 10px 0 #0b0420,
+                  0 15px 30px rgba(0,0,0,0.5)
+                `;
+              }}
+            >
+              <btn.icon size={28} color="#0b0420" strokeWidth={3} />
+              
+              {/* Outer glow ring (subtle) */}
+              <div className="absolute inset-[-12px] opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl pointer-events-none"
+                style={{ background: btn.color }} />
+            </a>
+          ))}
         </div>
       </div>
     </section>

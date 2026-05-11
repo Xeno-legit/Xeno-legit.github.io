@@ -22,6 +22,14 @@ export default function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // ── Force scroll to top on refresh ──
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   // ── Power button clicked → play intro ──
   const handlePowerOn = () => {
     setPhase('intro-video');
@@ -92,43 +100,67 @@ export default function App() {
 
       {/* ═══ PHASE 1: POWER SCREEN ═══ */}
       {phase === 'power-screen' && (
-        <div className="fixed inset-0 z-[3000] bg-[#0b0420] flex items-center justify-center">
-          <button
-            onClick={handlePowerOn}
-            className="power-button group vhs-flicker"
-            aria-label="Power On"
-          >
-            {/* Power icon (IEC 5009) */}
-            <svg
-              viewBox="0 0 24 24"
-              width="64"
-              height="64"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              className="power-icon"
+        <div className="fixed inset-0 z-[3000] bg-[#000000] flex items-center justify-center">
+          <div className="relative group vhs-flicker">
+            {/* White Border Layer */}
+            <div 
+              className="absolute inset-[-4px] bg-white pointer-events-none"
+              style={{
+                clipPath: 'polygon(35% 0%, 65% 0%, 65% 4%, 75% 4%, 75% 8%, 82% 8%, 82% 14%, 88% 14%, 88% 20%, 94% 20%, 94% 30%, 100% 30%, 100% 70%, 94% 70%, 94% 80%, 88% 80%, 88% 86%, 82% 86%, 82% 92%, 75% 92%, 75% 96%, 65% 96%, 65% 100%, 35% 100%, 35% 96%, 25% 96%, 25% 92%, 18% 92%, 18% 86%, 12% 86%, 12% 80%, 6% 80%, 6% 70%, 0% 70%, 0% 30%, 6% 30%, 6% 20%, 12% 20%, 12% 14%, 18% 14%, 18% 8%, 25% 8%, 25% 4%, 35% 4%)',
+              }}
+            />
+            
+            {/* Main Button */}
+            <button
+              onClick={handlePowerOn}
+              className="relative w-32 h-32 bg-[#333333] flex items-center justify-center transition-all duration-100 active:scale-95"
+              aria-label="Power On"
+              style={{
+                clipPath: 'polygon(35% 0%, 65% 0%, 65% 4%, 75% 4%, 75% 8%, 82% 8%, 82% 14%, 88% 14%, 88% 20%, 94% 20%, 94% 30%, 100% 30%, 100% 70%, 94% 70%, 94% 80%, 88% 80%, 88% 86%, 82% 86%, 82% 92%, 75% 92%, 75% 96%, 65% 96%, 65% 100%, 35% 100%, 35% 96%, 25% 96%, 25% 92%, 18% 92%, 18% 86%, 12% 86%, 12% 80%, 6% 80%, 6% 70%, 0% 70%, 0% 30%, 6% 30%, 6% 20%, 12% 20%, 12% 14%, 18% 14%, 18% 8%, 25% 8%, 25% 4%, 35% 4%)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#444444';
+                e.currentTarget.parentElement!.style.filter = 'drop-shadow(0 0 15px rgba(255,255,255,0.4))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#333333';
+                e.currentTarget.parentElement!.style.filter = 'none';
+              }}
             >
-              <path d="M12 2v8" />
-              <path d="M16.24 5.76a8 8 0 1 1-8.48 0" />
-            </svg>
-          </button>
+              {/* Power icon (IEC 5009) */}
+              <svg
+                viewBox="0 0 24 24"
+                width="64"
+                height="64"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                className="power-icon"
+              >
+                <path d="M12 2v8" />
+                <path d="M16.24 5.76a8 8 0 1 1-8.48 0" />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
 
       {/* ═══ PHASE 2: INTRO VIDEO ═══ */}
-      {phase === 'intro-video' && (
-        <div className="fixed inset-0 z-[3000] bg-[#0b0420] flex items-center justify-center">
+      {(phase === 'intro-video' || phase === 'boot-up') && (
+        <div
+          className="fixed inset-0 z-[5000] bg-[#0b0420] flex items-center justify-center transition-opacity duration-1000 ease-in-out"
+          style={{
+            opacity: phase === 'boot-up' ? 0 : 1,
+            pointerEvents: phase === 'boot-up' ? 'none' : 'auto'
+          }}
+        >
           <video
             src={introVideoSrc}
             autoPlay
             playsInline
             onEnded={handleIntroEnded}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-            }}
+            className="video-full-screen"
           />
         </div>
       )}
@@ -155,6 +187,9 @@ export default function App() {
                 <span>AV-1</span>
               </div>
             )}
+            {/* Added interlacing and chromatic aberration inside the lens */}
+            <div className="crt-interlace" />
+            <div className="crt-chromatic" />
           </div>
         </div>
       </div>
@@ -174,9 +209,11 @@ export default function App() {
       {/* Other VHS Overlays */}
       <div className="crt-screen" />
       <div className="vhs-grain" />
+      <div className="vhs-scanlines" />
       <div className="vhs-tracking" />
       <div className="vhs-bleed" />
       <div className="vhs-screen-flicker" />
+      <div className="crt-phosphor" />
 
 
       {/* Synthwave grid background — fixed behind everything */}
@@ -184,7 +221,7 @@ export default function App() {
 
       {/* Page Content — Simple fade in, CRT lens effect handles the rest */}
       <div
-        className={`crt-container relative z-10 ${phase === 'site' ? 'crt-turn-on vhs-flicker vhs-duration-3 crt-curved' : ''}`}
+        className={`crt-container relative z-10 ${phase === 'site' ? 'crt-turn-on vhs-flicker vhs-duration-3 crt-curved v-sync-jitter' : ''}`}
         style={{
           opacity: phase === 'site' ? undefined : 0,
           pointerEvents: phase === 'site' ? 'auto' : 'none',
@@ -210,10 +247,9 @@ export default function App() {
             playsInline
             loop={isErrorVideo}
             onEnded={handleOverlayEnded}
+            className="video-full-screen z-[2000]"
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: isFullScreenVideo ? 'cover' : 'contain',
+              transform: overlayVideo === movingVideoSrc ? 'scale(1.1)' : 'none',
             }}
           />
 
@@ -221,22 +257,29 @@ export default function App() {
           {isErrorVideo && (
             <button
               onClick={handleGoBack}
-              className="absolute top-8 left-8 z-10 flex items-center gap-2 px-5 py-3 font-mono text-xs tracking-[0.2em] uppercase rounded transition-all duration-300 group"
+              className="absolute top-8 left-8 z-10 flex items-center gap-2 px-5 py-3 font-mono text-xs tracking-[0.2em] uppercase transition-all duration-100 group active:translate-y-1"
               style={{
-                color: '#ffffff',
-                border: '1px solid rgba(255,255,255,0.3)',
-                background: 'rgba(0,0,0,0.5)',
-                backdropFilter: 'blur(8px)',
+                color: '#0b0420',
+                border: '3px solid #0b0420',
+                background: '#ffffff',
+                borderRadius: '2px',
+                boxShadow: 'inset 4px 4px 0 rgba(255,255,255,0.8), inset -4px -4px 0 rgba(0,0,0,0.2), 0 5px 0 #0b0420',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(255,255,255,0.15)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = 'inset 4px 4px 0 rgba(255,255,255,0.8), inset -4px -4px 0 rgba(0,0,0,0.2), 0 8px 0 #0b0420, 0 10px 20px rgba(255,255,255,0.2)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
-                e.currentTarget.style.background = 'rgba(0,0,0,0.5)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'inset 4px 4px 0 rgba(255,255,255,0.8), inset -4px -4px 0 rgba(0,0,0,0.2), 0 5px 0 #0b0420';
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(4px)';
+                e.currentTarget.style.boxShadow = 'inset 2px 2px 0 rgba(255,255,255,0.8), inset -2px -2px 0 rgba(0,0,0,0.2), 0 1px 0 #0b0420';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = 'inset 4px 4px 0 rgba(255,255,255,0.8), inset -4px -4px 0 rgba(0,0,0,0.2), 0 8px 0 #0b0420, 0 10px 20px rgba(255,255,255,0.2)';
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
