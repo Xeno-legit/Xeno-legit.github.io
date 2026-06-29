@@ -1,0 +1,147 @@
+/* 
+ * VHS & CRT Cinema Noise Effects
+ * Professional grade retro-futuristic overlays
+ */
+
+:root {
+    --vhs-noise-opacity: 0.12;
+    --vhs-scanline-opacity: 0.15;
+    --vhs-flicker-speed: 0.15s;
+}
+
+/* 1. ANIMATIONS */
+
+@keyframes vhs-noise-move {
+    0% { transform: translate(0,0); }
+    10% { transform: translate(-1%,-1%); }
+    20% { transform: translate(1%,1%); }
+    30% { transform: translate(-2%,0%); }
+    40% { transform: translate(2%,-1%); }
+    50% { transform: translate(-1%,2%); }
+    60% { transform: translate(1%,-2%); }
+    70% { transform: translate(-1.5%, 1%); }
+    80% { transform: translate(1.5%, 1.5%); }
+    90% { transform: translate(-0.5%, -1.5%); }
+    100% { transform: translate(0,0); }
+}
+
+@keyframes vhs-tracking-move {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 0.08; }
+    20% { transform: translateY(100vh); opacity: 0.08; }
+    21% { opacity: 0; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.01; }
+    5% { opacity: 0.02; }
+    10% { opacity: 0.01; }
+    15% { opacity: 0.03; }
+    20% { opacity: 0.01; }
+    25% { opacity: 0.02; }
+    30% { opacity: 0.01; }
+    35% { opacity: 0.02; }
+    40% { opacity: 0.01; }
+    45% { opacity: 0.03; }
+    50% { opacity: 0.01; }
+}
+
+@keyframes scanline-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+/* 2. CORE CLASSES */
+
+.vhs-noise {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 9991;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: var(--vhs-noise-opacity);
+    animation: vhs-noise-move 0.2s infinite steps(4);
+    mix-blend-mode: screen;
+}
+
+/* 3. CRT MAPPING (For App.tsx compatibility) */
+
+.crt-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9990;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    animation: vhs-noise-move 0.4s infinite steps(2);
+    mix-blend-mode: overlay;
+}
+
+.crt-scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9992;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.15) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanline-scroll 20s linear infinite;
+}
+
+.crt-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9995;
+    background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.3) 75%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    mix-blend-mode: multiply;
+}
+
+.crt-glitch {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9996;
+    background: rgba(255, 255, 255, 0.02);
+    opacity: 0;
+    animation: crt-flicker var(--vhs-flicker-speed) infinite;
+}
+
+/* 4. ADDITIONAL FLAVOR */
+
+.vhs-tracking-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.02);
+    filter: blur(1px);
+    z-index: 9993;
+    pointer-events: none;
+    animation: vhs-tracking-move 10s linear infinite;
+}
+
+.vhs-bottom-jitter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0,0,0,0.5);
+    z-index: 9994;
+    filter: blur(1px);
+    opacity: 0.3;
+}
