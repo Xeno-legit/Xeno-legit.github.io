@@ -1,33 +1,1325 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Abdulhamid Ali — Senior Frontend Engineer. Crafting smooth, animated, and performant user interfaces." />
-    <meta name="theme-color" content="#0a0a0a" />
-    <title>Abdulhamid Ali // CRT</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&family=Silkscreen:wght@400;700&display=swap"
-        rel="stylesheet" />
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALEX VOSS // VOID</title>
+<link rel="stylesheet" href="crt len effect/crt.css">
+<style>
+  /* CRT lens effect overlay — sits above the whole site, click-through */
+  .scanlines { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; }
+  .scanlines .screen { position: absolute; inset: 0; pointer-events: none; }
+</style>
+<script src="assets/asset-06.js"></script>
 </head>
-
 <body>
-    <div id="root"></div>
-    <svg style="position: absolute; pointer-events: none; width: 0; height: 0; overflow: hidden;">
-        <filter id="vhs-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" result="noise" />
-            <feColorMatrix type="saturate" values="0" />
-            <feComponentTransfer>
-                <feFuncA type="linear" slope="0.06" />
-            </feComponentTransfer>
-            <feBlend mode="screen" in="SourceGraphic" in2="noise" />
-        </filter>
-    </svg>
-    <script type="module" src="/src/main.tsx"></script>
-</body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-09.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-10.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-11.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/asset-09.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/asset-10.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/asset-11.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/asset-09.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/asset-10.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/asset-11.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/asset-09.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/asset-10.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/asset-11.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-12.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-13.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-14.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-15.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/asset-16.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<script src="assets/asset-08.js"></script>
+<script src="assets/asset-07.js"></script>
+<script src="assets/asset-05.js"></script>
+<style>
+ *{box-sizing:border-box;}
+ html{scroll-behavior:smooth;}
+ body{margin:0;background:#060606;color:#ededed;font-family:'Pixelify Sans',sans-serif;overflow-x:clip;}
+ ::selection{background:#ededed;color:#000;}
+ img{image-rendering:pixelated;}
+ ::-webkit-scrollbar{width:10px;}
+ ::-webkit-scrollbar-track{background:#0a0a0a;}
+ ::-webkit-scrollbar-thumb{background:#262626;border:2px solid #060606;}
+ @keyframes heroIn{from{opacity:0;filter:blur(10px);transform:translateY(14px);}to{opacity:1;filter:blur(0);transform:none;}}
+ @keyframes bootFade{0%,46%{opacity:1;}72%,100%{opacity:0;visibility:hidden;}}
+ @keyframes bootLine{0%,22%{transform:scaleY(.003);opacity:1;}44%{transform:scaleY(1);opacity:1;}58%{transform:scaleY(1);opacity:.5;}72%,100%{transform:scaleY(1);opacity:0;}}
+ @keyframes bootTxt{0%,10%{opacity:0;}20%,38%{opacity:1;}46%,100%{opacity:0;}}
+ @keyframes scanT{from{transform:translateY(0);}to{transform:translateY(600px);}}
+ @keyframes sweepY{from{transform:translateY(-30vh);}to{transform:translateY(130vh);}}
+ @keyframes vhsTrack{0%{transform:translateY(-25vh);opacity:0;}8%{opacity:.55;}50%{opacity:.3;}92%{opacity:.55;}100%{transform:translateY(125vh);opacity:0;}}
+ @keyframes vhsWarble{0%,100%{opacity:.05;transform:translateX(0);}33%{opacity:.08;transform:translateX(.6px);}66%{opacity:.05;transform:translateX(-.6px);}}
+ @keyframes ping{0%{transform:scale(.45);opacity:.85;}100%{transform:scale(2);opacity:0;}}
+ @keyframes driftNeb{0%,100%{transform:translate(0,0);}50%{transform:translate(-2.5%,1.5%);}}
+ @keyframes glitchClip{0%{transform:translate(0,0);text-shadow:0 0 18px rgba(74,222,235,.16);}42%{transform:translate(0,0);}43%{transform:translate(-2px,1px);}44%{transform:translate(2px,-1px);}45%{transform:translate(0,0);}50%{text-shadow:0 0 30px rgba(74,222,235,.32);}72%{transform:translate(0,0);}73%{transform:translate(1px,0);}74%{transform:translate(-1px,0);}75%{transform:translate(0,0);}100%{transform:translate(0,0);text-shadow:0 0 18px rgba(74,222,235,.16);}}
+ @keyframes blink{0%,100%{opacity:1;}50%{opacity:.18;}}
+ @keyframes floaty{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-7px);}}
+ @keyframes detailIn{from{opacity:0;transform:scale(1.04);filter:blur(12px);}to{opacity:1;transform:none;filter:blur(0);}}
+ @keyframes pulseBtn{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(74,222,235,.7);}50%{transform:scale(1.07);box-shadow:0 0 0 16px rgba(74,222,235,0);}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(74,222,235,0);}}
+ @keyframes alarmBlink{0%,100%{opacity:1;}50%{opacity:.25;}}
+ @keyframes diskSpin{from{transform:translate(-50%,-50%) rotate(-16deg);}to{transform:translate(-50%,-50%) rotate(344deg);}}
+ input[type=range].vp-scrub{outline:none;}
+ input[type=range].vp-scrub::-webkit-slider-runnable-track{height:18px;background:transparent;}
+ input[type=range].vp-scrub::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;margin-top:2px;background:#4adeeb;border:2px solid #031012;box-shadow:0 0 8px rgba(74,222,235,.9);cursor:pointer;}
+ input[type=range].vp-scrub::-moz-range-track{height:18px;background:transparent;}
+ input[type=range].vp-scrub::-moz-range-thumb{width:12px;height:12px;background:#4adeeb;border:2px solid #031012;border-radius:0;box-shadow:0 0 8px rgba(74,222,235,.9);cursor:pointer;}
+</style>
+</helmet>
 
-</html>
+<div ref="{{ rootRef }}" style="position:relative; width:100%;">
+
+  
+
+  <!-- ===== SPACE / VOID BACKGROUND ===== -->
+  <!-- fallbacks (shown only if WebGL is unavailable): base gradient + 2D stars -->
+  <div style="position:fixed; inset:0; z-index:-4; background:radial-gradient(ellipse 90% 70% at 18% 12%, rgba(20,74,92,.30), transparent 55%), radial-gradient(ellipse 80% 62% at 84% 82%, rgba(34,52,102,.24), transparent 55%), radial-gradient(circle at 50% 45%, #070b0f 0%, #04070a 60%, #020203 100%);"></div>
+  <canvas ref="{{ starRef }}" style="position:fixed; inset:0; z-index:-3; pointer-events:none;"></canvas>
+  <!-- the exact deep-space background from the show, rendered site-wide -->
+  <canvas ref="{{ ambRef }}" data-egg-skip="" style="position:fixed; inset:0; width:100%; height:100%; z-index:-2; pointer-events:none; opacity:0; transition:opacity .6s;"></canvas>
+
+  <!-- ===== CRT OVERLAY (decorative, click-through) ===== -->
+  <div data-egg-skip="" style="position:fixed; inset:0; z-index:9000; pointer-events:none;">
+    <div style="position:absolute; inset:0; overflow:hidden;"><div ref="{{ scanRef }}" style="position:absolute; left:0; right:0; top:-600px; bottom:0; opacity:.5; background:repeating-linear-gradient(to bottom, rgba(0,0,0,.42) 0px, rgba(0,0,0,.42) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 3px); animation:scanT 9s linear infinite; will-change:transform;"></div></div>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 120% 130% at 50% 50%, rgba(0,0,0,0) 52%, rgba(0,0,0,.78) 100%); box-shadow:inset 0 0 170px 34px rgba(0,0,0,.92);"></div>
+    <div ref="{{ sweepRef }}" style="position:absolute; left:0; right:0; height:140px; background:linear-gradient(transparent, rgba(255,255,255,.028), transparent); animation:sweepY 8s linear infinite;"></div>
+    <div ref="{{ flickRef }}" style="position:absolute; inset:0;">
+      <div style="position:absolute; inset:0; mix-blend-mode:screen; background:repeating-linear-gradient(to bottom, rgba(74,222,235,.035) 0 1px, transparent 1px 4px); animation:vhsWarble 1.6s steps(3) infinite;"></div>
+      <div style="position:absolute; left:0; right:0; height:100px; background:linear-gradient(transparent, rgba(200,245,255,.05) 38%, rgba(255,255,255,.12) 50%, rgba(200,245,255,.05) 62%, transparent); filter:blur(1.2px); animation:vhsTrack 6.5s linear infinite;"></div>
+      <div style="position:absolute; left:0; right:0; height:2px; background:rgba(74,222,235,.14); filter:blur(.5px); animation:vhsTrack 6.5s linear .25s infinite;"></div>
+    </div>
+  </div>
+
+  <!-- ===== BOOT POWER-ON ===== -->
+  <div ref="{{ bootRef }}" data-egg-skip="" style="position:fixed; inset:0; z-index:9990; background:#000; pointer-events:none; overflow:hidden; display:flex; align-items:center; justify-content:center; animation:bootFade 2.7s ease forwards;">
+    <div style="position:absolute; left:0; right:0; top:0; bottom:0; background:#f4f4f4; transform-origin:center; transform:scaleY(.003); box-shadow:0 0 30px 8px rgba(255,255,255,.7); animation:bootLine 2.7s ease forwards;"></div>
+    <div style="position:relative; text-align:center; font-family:'Press Start 2P',monospace; font-size:10px; color:#9a9a9a; letter-spacing:2px; line-height:2.6; animation:bootTxt 2.7s ease forwards;">
+      <div>// POWERING ON</div>
+      <div>// CALIBRATING VOID</div>
+      <div>// SIGNAL ACQUIRED</div>
+    </div>
+  </div>
+
+  <!-- ===== CHANNEL INDICATOR ===== -->
+  <div style="position:fixed; top:20px; left:22px; z-index:800; display:flex; align-items:center; gap:9px; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#cfcfcf; background:rgba(0,0,0,.45); padding:9px 12px; border:1px solid #1e1e1e;">
+    <span style="width:8px; height:8px; background:#4adeeb; border-radius:50%; box-shadow:0 0 9px rgba(74,222,235,.9); animation:blink 1.4s steps(2,end) infinite;"></span>
+    <span ref="{{ chRef }}">CH 01 · HERO</span>
+  </div>
+
+  <!-- ===== SOUND TOGGLE ===== -->
+  <button onclick="{{ toggleMute }}" data-egg-skip="" style="position:fixed; top:20px; right:22px; z-index:5300; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#cfcfcf; background:rgba(0,0,0,.45); border:1px solid #1e1e1e; padding:9px 12px; cursor:pointer; transition:all .2s;" style-hover="border-color:#4adeeb; color:#4adeeb;">{{ sndLabel }}</button>
+
+
+  <!-- ===== NAV ===== -->
+  <nav ref="{{ navRef }}" data-egg-skip="" style="position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:800; display:flex; flex-direction:column; gap:13px; align-items:flex-end;">
+    <sc-for list="{{ navItems }}" as="it" hint-placeholder-count="8">
+      <div data-nav="" onclick="{{ it.go }}" style="display:flex; align-items:center; gap:9px; cursor:pointer; color:#5a5a5a; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; transition:color .25s, opacity .25s;">
+        <span style="opacity:.6;">{{ it.num }}</span>
+        <span>{{ it.label }}</span>
+        <span data-dot="" style="width:8px; height:8px; background:transparent; border:2px solid currentColor; display:inline-block; transition:all .25s;"></span>
+      </div>
+    </sc-for>
+  </nav>
+
+  <!-- ===== SECTIONS ===== -->
+
+  <!-- HERO -->
+  <section data-id="hero" data-label="HERO" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 24px;">
+    <div ref="{{ heroRef }}" style="position:relative; animation:heroIn 1.1s 1.7s both;">
+      <div style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:3px; color:#4adeeb; margin-bottom:30px;">// TRANSMISSION 001</div>
+      <h1 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(36px,8.6vw,108px); line-height:1.06; margin:0; color:#ededed; text-shadow:0 0 26px rgba(237,237,237,.16); animation:glitchClip 6s linear infinite;">ALEX<br>VOSS</h1>
+      <p style="font-family:'Pixelify Sans',sans-serif; font-size:clamp(15px,2vw,21px); color:#b8b8b8; margin:34px auto 0; max-width:540px; line-height:1.75;">I build things that should not exist. Software developer, operating from the void — pulling structure out of static for six years.</p>
+    </div>
+    <div style="position:absolute; bottom:38px; left:50%; transform:translateX(-50%); font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:2px; color:#6a6a6a; animation:floaty 2.2s ease-in-out infinite;">▼ DESCEND</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section data-id="about" data-label="ABOUT" data-screen-label="About" style="position:relative; min-height:100vh; display:flex; align-items:center; padding:120px 6vw;">
+    <div style="width:100%; max-width:1080px; margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:60px; align-items:center;">
+      <div data-reveal="" style="aspect-ratio:3/4; border:2px dashed #2a2a2a; background:#0a0a0a; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:repeating-linear-gradient(0deg,#0d0d0d 0 2px,#080808 2px 4px); opacity:.6;"></div>
+        <div style="position:relative; font-family:'Press Start 2P',monospace; font-size:13px; color:#7a7a7a; animation:blink 1.8s steps(2,end) infinite;">NO SIGNAL</div>
+        <div style="position:relative; font-family:'Pixelify Sans',sans-serif; font-size:12px; color:#444; letter-spacing:1px;">[ AWAITING IMAGE ]</div>
+      </div>
+      <div>
+        <div data-reveal="" style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:18px;">02 // THE OPERATOR</div>
+        <h2 data-reveal="" data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(20px,3vw,38px); line-height:1.25; margin:0 0 26px; color:#ededed; animation:glitchClip 8s linear 1s infinite;">WHO IS<br>ALEX VOSS?</h2>
+        <p data-reveal="" style="font-family:'Pixelify Sans',sans-serif; font-size:18px; line-height:1.85; color:#bdbdbd; max-width:540px; margin:0 0 16px;">Some people write code. I negotiate with the void and come back with software.</p>
+        <p data-reveal="" style="font-family:'Pixelify Sans',sans-serif; font-size:18px; line-height:1.85; color:#8f8f8f; max-width:540px; margin:0;">Front-end to back-end, pixel to packet — I build interfaces that feel like they shouldn't run. Then they run.</p>
+        <div data-reveal="" style="display:flex; gap:46px; margin-top:42px; flex-wrap:wrap;">
+          <div data-stat=""><div style="font-family:'Press Start 2P',monospace; font-size:26px; color:#ededed;">06</div><div style="font-family:'Pixelify Sans',sans-serif; font-size:12px; color:#6a6a6a; letter-spacing:1px; margin-top:8px;">YEARS IN THE DARK</div></div>
+          <div data-stat=""><div style="font-family:'Press Start 2P',monospace; font-size:26px; color:#ededed;">∞</div><div style="font-family:'Pixelify Sans',sans-serif; font-size:12px; color:#6a6a6a; letter-spacing:1px; margin-top:8px;">LOOPS SURVIVED</div></div>
+          <div data-stat="" onclick="{{ bugTap }}" title="" style="user-select:none; cursor:default;"><div style="font-family:'Press Start 2P',monospace; font-size:26px; color:#ededed;">00</div><div style="font-family:'Pixelify Sans',sans-serif; font-size:12px; color:#6a6a6a; letter-spacing:1px; margin-top:8px;">BUGS ADMITTED</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SHOW (scroll seal) -->
+  <section data-id="show" data-label="SHOW" data-screen-label="The Show" ref="{{ showSecRef }}" style="position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:110px 5vw 90px; gap:30px;">
+    <div data-reveal="" style="text-align:center; max-width:760px;">
+      <div style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:16px;">03 // MAIN EVENT</div>
+      <h2 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(22px,3.6vw,44px); line-height:1.25; margin:0 0 18px; color:#ededed; animation:glitchClip 7s linear .4s infinite;">FEATURE<br>PRESENTATION</h2>
+      <p style="font-family:'Pixelify Sans',sans-serif; font-size:17px; line-height:1.7; color:#9a9a9a; margin:0;">The void would like to show you something before you go on — a live demonstration of what it does to light, matter, and time. The rest of this site sits on the far side of it.</p>
+    </div>
+    <div data-reveal="" style="position:relative; width:min(92vw,1100px); border:2px solid #143b42; background:#020304; box-shadow:inset 0 0 90px rgba(0,0,0,.9), 0 0 0 6px #060606, 0 0 60px rgba(74,222,235,.10); display:grid; grid-template-columns:380px 1fr; overflow:hidden;">
+      <div style="position:relative; background:radial-gradient(circle at 50% 50%, #150d06, #000 74%); border-right:1px solid #0e2a30; min-height:300px; overflow:hidden;">
+        <canvas ref="{{ previewRef }}" data-preview-canvas="1" style="position:absolute; inset:0; width:100%; height:100%; display:block;"></canvas>
+        <div style="position:absolute; inset:0; pointer-events:none; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);"></div>
+        <div style="position:absolute; left:12px; bottom:10px; display:flex; align-items:center; gap:7px; font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:2px; color:#4adeeb; text-shadow:0 0 8px rgba(74,222,235,.5);"><span style="width:7px; height:7px; background:#4adeeb; box-shadow:0 0 8px rgba(74,222,235,.8); display:inline-block;"></span>LIVE</div>
+        <div style="position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(to bottom, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);"></div>
+        <div style="position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 60px rgba(0,0,0,.85);"></div>
+      </div>
+      <div style="position:relative; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px; padding:38px 40px; text-align:left;">
+        <div style="font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:2px; color:#9a9a9a; line-height:1.8;">SPACETIME —<br>A LIVE DEMONSTRATION</div>
+        <p style="font-family:'Pixelify Sans',sans-serif; font-size:16px; line-height:1.65; color:#8fa6ab; margin:0;">You’ll be flown to the edge of a black hole, pushed past the event horizon, and spat out the other side. Light bends, the disk screams, time misbehaves. Runtime: about a minute. Survival: guaranteed*.</p>
+        <button ref="{{ watchBtnRef }}" onclick="{{ startShow }}" style="font-family:'Press Start 2P',monospace; font-size:12px; letter-spacing:2px; color:#031012; background:#4adeeb; border:2px solid #4adeeb; padding:17px 28px; cursor:pointer; transition:all .2s;" style-hover="background:transparent; color:#4adeeb; box-shadow:0 0 30px rgba(74,222,235,.35);">▶ WATCH THE SHOW</button>
+        <sc-if value="{{ notWatched }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family:'Pixelify Sans',sans-serif; font-size:13px; letter-spacing:1px; color:#5f8189;">// the road below is sealed until the show has been witnessed</div>
+        </sc-if>
+        <sc-if value="{{ watched }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'Pixelify Sans',sans-serif; font-size:13px; letter-spacing:1px; color:#4adeeb;">// seal broken — the road below is open. press play to rewatch.</div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- GATED CONTENT: everything below only exists after the show -->
+  <div ref="{{ gateRef }}" style="display:none;">
+
+  <!-- MAIN PROJECTS (auto-choreography) -->
+  <section data-id="projects" data-label="PROJECTS" data-screen-label="Projects" ref="{{ projSecRef }}" style="position:relative; height:100vh; overflow:hidden;">
+    <div ref="{{ blackoutRef }}" style="position:fixed; inset:0; background:#000; opacity:var(--o,0); pointer-events:none; z-index:1;"></div>
+    <img ref="{{ fistLRef }}" src="assets/asset-02.png" alt="" style="position:absolute; left:50%; top:50%; width:min(34vh,300px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,-8vw)), calc(-50% + var(--y,-36vh)), 0) scale(var(--s,.62)); filter:drop-shadow(0 0 26px rgba(237,237,237,.12)); will-change:transform,opacity; z-index:2;">
+    <img ref="{{ fistRRef }}" src="assets/asset-03.png" alt="" style="position:absolute; left:50%; top:50%; width:min(34vh,300px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,8vw)), calc(-50% + var(--y,-36vh)), 0) scale(var(--s,.62)); filter:drop-shadow(0 0 26px rgba(237,237,237,.12)); will-change:transform,opacity; z-index:2;">
+    <img ref="{{ palmLRef }}" src="assets/asset-01.png" alt="" style="position:absolute; left:50%; top:50%; width:min(42vh,380px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,-13vw)), calc(-50% + var(--y,5vh)), 0) scale(var(--s,.82)); filter:drop-shadow(0 0 32px rgba(237,237,237,.14)); will-change:transform,opacity; z-index:2;">
+    <img ref="{{ palmRRef }}" src="assets/asset-04.png" alt="" style="position:absolute; left:50%; top:50%; width:min(42vh,380px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,13vw)), calc(-50% + var(--y,5vh)), 0) scale(var(--s,.82)); filter:drop-shadow(0 0 32px rgba(237,237,237,.14)); will-change:transform,opacity; z-index:2;">
+
+    <div ref="{{ chooseRef }}" style="position:absolute; left:50%; top:11%; transform:translateX(-50%); text-align:center; opacity:var(--o,0); width:90%; z-index:2;">
+      <h2 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(30px,6vw,72px); margin:0; color:#ededed; text-shadow:0 0 30px rgba(237,237,237,.2); animation:glitchClip 5.5s linear infinite;">CHOOSE.</h2>
+      <p style="font-family:'Pixelify Sans',sans-serif; font-size:15px; letter-spacing:1px; color:#7a7a7a; margin:18px 0 0;">// two artifacts. one path. take one.</p>
+    </div>
+
+    <div data-card="" ref="{{ cardLRef }}" onclick="{{ openL }}" style="position:absolute; left:50%; top:50%; width:min(78vw,300px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,-21vw)), calc(-50% + var(--y,-7vh)), 0); pointer-events:none; cursor:pointer; border:2px solid #2a2a2a; background:rgba(8,8,8,.9); padding:24px; display:flex; flex-direction:column; gap:13px; box-shadow:0 0 44px rgba(0,0,0,.85); transition:border-color .25s, box-shadow .25s; z-index:2;" style-hover="border-color:#ededed; box-shadow:0 0 50px rgba(237,237,237,.18);">
+      <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:1px; color:#6a6a6a;">{{ pL.tag }} · {{ pL.year }}</div>
+      <div style="align-self:flex-start; border:2px solid #2a2a2a; padding:12px 16px; font-family:'Press Start 2P',monospace; font-size:20px; color:#ededed;">{{ pL.mono }}</div>
+      <h3 style="font-family:'Press Start 2P',monospace; font-size:15px; line-height:1.4; margin:4px 0 0; color:#ededed;">{{ pL.name }}</h3>
+      <p style="font-family:'Pixelify Sans',sans-serif; font-size:15px; line-height:1.6; color:#9a9a9a; margin:0;">{{ pL.summary }}</p>
+      <div style="margin-top:6px; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#4adeeb;">OPEN ▶</div>
+    </div>
+
+    <div data-card="" ref="{{ cardRRef }}" onclick="{{ openR }}" style="position:absolute; left:50%; top:50%; width:min(78vw,300px); opacity:var(--o,0); transform:translate3d(calc(-50% + var(--x,21vw)), calc(-50% + var(--y,-7vh)), 0); pointer-events:none; cursor:pointer; border:2px solid #2a2a2a; background:rgba(8,8,8,.9); padding:24px; display:flex; flex-direction:column; gap:13px; box-shadow:0 0 44px rgba(0,0,0,.85); transition:border-color .25s, box-shadow .25s; z-index:2;" style-hover="border-color:#ededed; box-shadow:0 0 50px rgba(237,237,237,.18);">
+      <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:1px; color:#6a6a6a;">{{ pR.tag }} · {{ pR.year }}</div>
+      <div style="align-self:flex-start; border:2px solid #2a2a2a; padding:12px 16px; font-family:'Press Start 2P',monospace; font-size:20px; color:#ededed;">{{ pR.mono }}</div>
+      <h3 style="font-family:'Press Start 2P',monospace; font-size:15px; line-height:1.4; margin:4px 0 0; color:#ededed;">{{ pR.name }}</h3>
+      <p style="font-family:'Pixelify Sans',sans-serif; font-size:15px; line-height:1.6; color:#9a9a9a; margin:0;">{{ pR.summary }}</p>
+      <div style="margin-top:6px; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#4adeeb;">OPEN ▶</div>
+    </div>
+  </section>
+
+  <!-- HORIZONTAL RAIL: SIDE / SKILLS / PAST -->
+  <section data-id="rail" data-label="SIDE" data-screen-label="Side-Skills-Past Rail" ref="{{ railRef }}" style="position:relative; height:300vh;">
+    <div style="position:sticky; top:0; height:100vh; overflow:hidden;">
+      <div ref="{{ trackRef }}" style="display:flex; height:100%; width:300vw; will-change:transform;">
+
+        <!-- PANEL: SIDE QUESTS -->
+        <div data-screen-label="Side Quests" style="width:100vw; height:100%; flex:none; display:flex; align-items:center; padding:0 6vw;">
+          <div style="max-width:1100px; margin:0 auto; width:100%;">
+            <div data-reveal="" style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:18px;">05 // FRAGMENTS</div>
+            <h2 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(22px,3.4vw,42px); line-height:1.25; margin:0 0 14px; color:#ededed; animation:glitchClip 9s linear .8s infinite;">SIDE QUESTS</h2>
+            <p style="font-family:'Pixelify Sans',sans-serif; font-size:17px; line-height:1.7; color:#8f8f8f; max-width:560px; margin:0;">Smaller experiments pulled from the dark. Built for no reason but the doing.</p>
+            <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,1fr)); gap:18px; margin-top:38px;">
+              <sc-for list="{{ sideProjects }}" as="sp" hint-placeholder-count="4">
+                <div data-card="" style="border:2px solid #242424; background:#0a0a0a; padding:24px; display:flex; flex-direction:column; gap:12px; min-height:190px; transition:border-color .25s, box-shadow .25s;" style-hover="border-color:#ededed; box-shadow:0 0 40px rgba(0,0,0,.7);">
+                  <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:1px; color:#6a6a6a;">{{ sp.tag }}</div>
+                  <h3 style="font-family:'Press Start 2P',monospace; font-size:14px; margin:4px 0 0; color:#ededed;">{{ sp.name }}</h3>
+                  <p style="font-family:'Pixelify Sans',sans-serif; font-size:15px; line-height:1.6; color:#9a9a9a; margin:0; flex:1;">{{ sp.desc }}</p>
+                  <div style="font-family:'Press Start 2P',monospace; font-size:8px; color:#555; letter-spacing:1px;">{{ sp.year }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:2px; color:#4f6a70; margin-top:34px;">KEEP SCROLLING ▶ THE RAIL SLIDES SIDEWAYS</div>
+          </div>
+        </div>
+
+        <!-- PANEL: SKILLS -->
+        <div data-screen-label="Skills" style="width:100vw; height:100%; flex:none; display:flex; align-items:center; padding:0 6vw;">
+          <div style="max-width:1100px; margin:0 auto; width:100%;">
+            <div style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:18px;">06 // CAPABILITIES</div>
+            <h2 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(22px,3.4vw,42px); line-height:1.25; margin:0 0 34px; color:#ededed; animation:glitchClip 8.5s linear .2s infinite;">SYSTEMS ONLINE</h2>
+            <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:44px;">
+              <sc-for list="{{ skills }}" as="cat" hint-placeholder-count="3">
+                <div>
+                  <h3 style="font-family:'Press Start 2P',monospace; font-size:12px; letter-spacing:1px; color:#ededed; margin:0 0 20px; padding-bottom:13px; border-bottom:1px solid #1e1e1e;">{{ cat.name }}</h3>
+                  <div style="display:flex; flex-direction:column; gap:14px;">
+                    <sc-for list="{{ cat.items }}" as="sk" hint-placeholder-count="5">
+                      <div>
+                        <div style="display:flex; justify-content:space-between; font-family:'Pixelify Sans',sans-serif; font-size:14px; color:#cfcfcf; margin-bottom:6px;"><span>{{ sk.name }}</span><span style="color:#5a5a5a;">{{ sk.lvl }}</span></div>
+                        <div style="display:flex; gap:3px;">
+                          <sc-for list="{{ sk.on }}" as="f" hint-placeholder-count="7"><i style="width:100%; height:12px; background:#4adeeb; box-shadow:0 0 7px rgba(74,222,235,.5);"></i></sc-for>
+                          <sc-for list="{{ sk.off }}" as="e" hint-placeholder-count="3"><i style="width:100%; height:12px; background:#1a1a1a;"></i></sc-for>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: PAST -->
+        <div data-screen-label="Timeline" style="width:100vw; height:100%; flex:none; display:flex; align-items:center; padding:0 6vw;">
+          <div style="max-width:840px; margin:0 auto; width:100%;">
+            <div style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:18px;">07 // PAST LIVES</div>
+            <h2 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(22px,3.4vw,42px); line-height:1.25; margin:0 0 36px; color:#ededed; animation:glitchClip 7.5s linear .6s infinite;">TIMELINE</h2>
+            <div data-reveal="" style="border-left:2px solid #222; padding-left:32px; display:flex; flex-direction:column; gap:34px;">
+              <sc-for list="{{ experience }}" as="ex" hint-placeholder-count="3">
+                <div data-card="" style="position:relative;">
+                  <div style="position:absolute; left:-41px; top:5px; width:14px; height:14px; background:#4adeeb; box-shadow:0 0 12px rgba(74,222,235,.6);"></div>
+                  <div style="font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#6a6a6a; margin-bottom:10px;">{{ ex.period }}</div>
+                  <h3 style="font-family:'Press Start 2P',monospace; font-size:14px; margin:0 0 6px; color:#ededed;">{{ ex.role }}</h3>
+                  <div style="font-family:'Pixelify Sans',sans-serif; font-size:15px; color:#7a7a7a; margin-bottom:8px;">{{ ex.org }}</div>
+                  <p style="font-family:'Pixelify Sans',sans-serif; font-size:16px; line-height:1.7; color:#9a9a9a; margin:0; max-width:560px;">{{ ex.desc }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section data-id="contact" data-label="CONTACT" data-screen-label="Contact" style="position:relative; min-height:100vh; padding:120px 6vw 80px; display:flex; flex-direction:column; justify-content:center;">
+    <div style="max-width:1000px; margin:0 auto; width:100%;">
+      <div data-reveal="" style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:2px; color:#4adeeb; margin-bottom:18px;">08 // TRANSMIT</div>
+      <h2 data-reveal="" data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(22px,3.8vw,46px); line-height:1.25; margin:0 0 14px; color:#ededed; animation:glitchClip 6.5s linear infinite;">SEND A SIGNAL<br>INTO THE VOID</h2>
+      <p data-reveal="" style="font-family:'Pixelify Sans',sans-serif; font-size:17px; line-height:1.7; color:#8f8f8f; max-width:520px; margin:0 0 44px;">I read every transmission. Most of them, anyway.</p>
+      <div data-reveal="" style="display:grid; grid-template-columns:1.3fr 1fr; gap:50px; align-items:start;">
+        <div>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onsubmit="{{ onContact }}" style="display:flex; flex-direction:column; gap:16px;">
+              <input name="handle" placeholder="YOUR HANDLE" autocomplete="off" style="font-family:'Pixelify Sans',sans-serif; font-size:15px; color:#ededed; background:#0a0a0a; border:2px solid #242424; padding:15px; outline:none; transition:border-color .2s;" style-focus="border-color:#ededed;">
+              <input name="freq" placeholder="FREQUENCY / EMAIL" autocomplete="off" style="font-family:'Pixelify Sans',sans-serif; font-size:15px; color:#ededed; background:#0a0a0a; border:2px solid #242424; padding:15px; outline:none; transition:border-color .2s;" style-focus="border-color:#ededed;">
+              <textarea name="msg" placeholder="YOUR MESSAGE TO THE DARK" rows="4" style="font-family:'Pixelify Sans',sans-serif; font-size:15px; color:#ededed; background:#0a0a0a; border:2px solid #242424; padding:15px; outline:none; resize:vertical; transition:border-color .2s;" style-focus="border-color:#ededed;"></textarea>
+              <button type="submit" style="align-self:flex-start; font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:1px; color:#031012; background:#4adeeb; border:2px solid #4adeeb; padding:15px 24px; cursor:pointer; transition:all .2s;" style-hover="background:transparent; color:#4adeeb;">TRANSMIT ▶</button>
+            </form>
+          </sc-if>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="border:2px solid #2a2a2a; background:#0a0a0a; padding:40px;">
+              <div style="font-family:'Press Start 2P',monospace; font-size:13px; color:#ededed; line-height:1.8; margin-bottom:14px;">SIGNAL RECEIVED.</div>
+              <p style="font-family:'Pixelify Sans',sans-serif; font-size:16px; line-height:1.7; color:#9a9a9a; margin:0 0 20px;">The void has your transmission. It will respond in its own time.</p>
+              <button onclick="{{ resetContact }}" style="font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#cfcfcf; background:transparent; border:2px solid #2a2a2a; padding:11px 14px; cursor:pointer; transition:all .2s;" style-hover="background:#ededed; color:#000; border-color:#ededed;">◀ SEND ANOTHER</button>
+            </div>
+          </sc-if>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:1px; color:#cfcfcf; text-decoration:none; border:2px solid #242424; padding:18px; transition:all .2s;" style-hover="border-color:#ededed; background:#0a0a0a;"><span>EMAIL</span><span style="color:#5a5a5a;">▶</span></a>
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:1px; color:#cfcfcf; text-decoration:none; border:2px solid #242424; padding:18px; transition:all .2s;" style-hover="border-color:#ededed; background:#0a0a0a;"><span>GITHUB</span><span style="color:#5a5a5a;">▶</span></a>
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:1px; color:#cfcfcf; text-decoration:none; border:2px solid #242424; padding:18px; transition:all .2s;" style-hover="border-color:#ededed; background:#0a0a0a;"><span>LINKEDIN</span><span style="color:#5a5a5a;">▶</span></a>
+          <a href="#" style="display:flex; justify-content:space-between; align-items:center; font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:1px; color:#cfcfcf; text-decoration:none; border:2px solid #242424; padding:18px; transition:all .2s;" style-hover="border-color:#ededed; background:#0a0a0a;"><span>X / TWITTER</span><span style="color:#5a5a5a;">▶</span></a>
+        </div>
+      </div>
+      <div style="margin-top:70px; padding-top:24px; border-top:1px solid #161616; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+        <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:1px; color:#4a4a4a;">© 2026 ALEX VOSS — BROADCASTING FROM THE VOID</div>
+        <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:2px; color:#0d0d0d;">▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ B A</div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ===== PROJECT DETAIL OVERLAY ===== -->
+  <sc-if value="{{ project }}" hint-placeholder-val="{{ false }}">
+    <div data-egg-skip="" style="position:fixed; inset:0; z-index:1500; background:#060606; overflow-y:auto; animation:detailIn .55s cubic-bezier(.2,.8,.2,1) both;">
+      <div style="position:absolute; inset:0; pointer-events:none; opacity:.4; background:repeating-linear-gradient(to bottom, rgba(0,0,0,.4) 0 1px, transparent 1px 3px);"></div>
+      <div style="max-width:880px; margin:0 auto; padding:80px 6vw 110px; position:relative;">
+        <button onclick="{{ closeProject }}" style="font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#cfcfcf; background:transparent; border:2px solid #2a2a2a; padding:11px 15px; cursor:pointer; margin-bottom:46px; transition:all .2s;" style-hover="background:#ededed; color:#000; border-color:#ededed;">◀ EJECT</button>
+        <div style="font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#5a5a5a; margin-bottom:22px;">{{ project.tag }} · {{ project.year }} · {{ project.role }}</div>
+        <h1 data-glitch="" style="display:inline-block; font-family:'Press Start 2P',monospace; font-size:clamp(28px,5vw,60px); line-height:1.15; margin:0 0 36px; color:#ededed; text-shadow:0 0 26px rgba(237,237,237,.15); animation:glitchClip 7s linear infinite;">{{ project.name }}</h1>
+        <div style="display:flex; gap:32px; align-items:center; margin-bottom:40px; flex-wrap:wrap;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+            <div style="border:2px solid #2a2a2a; padding:22px 26px; font-family:'Press Start 2P',monospace; font-size:34px; color:#ededed; box-shadow:0 0 30px rgba(0,0,0,.7);">{{ project.mono }}</div>
+            <div style="font-family:'Pixelify Sans',sans-serif; font-size:11px; color:#444; letter-spacing:1px;">[ LOGO ]</div>
+          </div>
+          <p style="font-family:'Pixelify Sans',sans-serif; font-size:20px; line-height:1.7; color:#cfcfcf; margin:0; flex:1; min-width:240px;">{{ project.summary }}</p>
+        </div>
+        <sc-for list="{{ project.body }}" as="para" hint-placeholder-count="3">
+          <p style="font-family:'Pixelify Sans',sans-serif; font-size:17px; line-height:1.85; color:#9a9a9a; margin:0 0 20px;">{{ para }}</p>
+        </sc-for>
+        <div style="font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:2px; color:#5a5a5a; margin:44px 0 18px;">STACK</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <sc-for list="{{ project.tech }}" as="t" hint-placeholder-count="5">
+            <span style="font-family:'Pixelify Sans',sans-serif; font-size:14px; color:#cfcfcf; border:1px solid #2a2a2a; padding:8px 13px; background:#0a0a0a;">{{ t }}</span>
+          </sc-for>
+        </div>
+        <div style="font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:2px; color:#5a5a5a; margin:44px 0 18px;">SIGNALS</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <sc-for list="{{ project.highlights }}" as="h" hint-placeholder-count="3">
+            <div style="display:flex; gap:12px; align-items:flex-start;"><span style="color:#ededed; font-family:'Press Start 2P',monospace; font-size:9px; margin-top:3px;">▸</span><span style="font-family:'Pixelify Sans',sans-serif; font-size:16px; line-height:1.6; color:#b8b8b8;">{{ h }}</span></div>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:46px; flex-wrap:wrap;">
+          <sc-for list="{{ project.links }}" as="lnk" hint-placeholder-count="2">
+            <a href="{{ lnk.href }}" target="_blank" rel="noreferrer" style="font-family:'Press Start 2P',monospace; font-size:10px; letter-spacing:1px; color:#000; background:#ededed; border:2px solid #ededed; padding:14px 20px; text-decoration:none; transition:all .2s;" style-hover="background:transparent; color:#ededed;">{{ lnk.label }} ▶</a>
+          </sc-for>
+        </div>
+        <div style="font-family:'Press Start 2P',monospace; font-size:8px; letter-spacing:2px; color:#3a3a3a; margin-top:60px;">// END TRANSMISSION</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== THE SHOW OVERLAY (black hole) ===== -->
+  <div ref="{{ showRef }}" data-egg-skip="" data-screen-label="Black Hole Show" style="position:fixed; inset:0; z-index:5000; background:#000; opacity:0; pointer-events:none; transition:opacity .9s ease;">
+    <canvas ref="{{ bhRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block;"></canvas>
+    <div style="position:absolute; left:22px; top:20px; font-family:'Press Start 2P',monospace; font-size:9px; color:#6a6a6a; letter-spacing:2px;">CH 03 · LIVE — DO NOT ADJUST YOUR SET</div>
+    <div ref="{{ capBoxRef }}" style="position:absolute; left:50%; bottom:15vh; transform:translateX(-50%); width:min(92vw,860px); text-align:center; pointer-events:none; background:rgba(0,0,0,.62); border:1px solid rgba(255,255,255,.09); padding:20px 26px 24px; opacity:0; transition:opacity .35s;">
+      <div ref="{{ capTitleRef }}" style="font-family:'Press Start 2P',monospace; font-size:clamp(14px,2vw,22px); letter-spacing:1px; color:#ededed; text-shadow:0 2px 18px rgba(0,0,0,.95); transition:opacity .35s; margin-bottom:16px;"></div>
+      <div ref="{{ capBodyRef }}" style="font-family:'Pixelify Sans',sans-serif; font-size:clamp(15px,1.7vw,20px); line-height:1.7; color:#c9c9c9; text-shadow:0 1px 10px rgba(0,0,0,.95); transition:opacity .35s;"></div>
+    </div>
+    <!-- transport -->
+    <div data-egg-skip="" style="position:absolute; left:0; right:0; bottom:0; padding:14px clamp(16px,3vw,40px) 18px; background:linear-gradient(transparent, rgba(0,0,0,.72) 45%); display:flex; flex-direction:column; gap:13px;">
+      <div ref="{{ scrubWrapRef }}" style="position:relative; height:18px; display:flex; align-items:center;">
+        <div style="position:absolute; left:0; right:0; height:4px; background:rgba(255,255,255,.16);"></div>
+        <div ref="{{ progRef }}" style="position:absolute; left:0; height:4px; width:0%; background:#4adeeb; box-shadow:0 0 10px rgba(74,222,235,.85);"></div>
+        <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="8">
+          <div onclick="{{ ch.go }}" title="{{ ch.label }}" style="position:absolute; top:50%; left:{{ ch.pct }}; transform:translate(-50%,-50%); width:3px; height:12px; background:rgba(200,245,255,.4); cursor:pointer;"></div>
+        </sc-for>
+        <input ref="{{ scrubRef }}" class="vp-scrub" type="range" min="0" max="1000" value="0" oninput="{{ onScrub }}" onpointerdown="{{ onScrubDown }}" onpointerup="{{ onScrubUp }}" style="position:absolute; left:-2px; right:-2px; width:calc(100% + 4px); height:18px; margin:0; background:transparent; -webkit-appearance:none; appearance:none; cursor:pointer;">
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:1px; color:#cfcfcf;">
+        <button onclick="{{ prevBeat }}" title="Previous beat" style="background:rgba(0,0,0,.4); border:1px solid #2a2a2a; color:#cfcfcf; padding:9px 11px; cursor:pointer; transition:all .2s;" style-hover="border-color:#4adeeb; color:#4adeeb;">⏮</button>
+        <button ref="{{ ppRef }}" onclick="{{ togglePlay }}" title="Play / pause (space)" style="background:#4adeeb; border:1px solid #4adeeb; color:#031012; padding:9px 13px; cursor:pointer; min-width:40px; transition:all .2s;" style-hover="background:transparent; color:#4adeeb;">⏸</button>
+        <button onclick="{{ nextBeat }}" title="Next beat" style="background:rgba(0,0,0,.4); border:1px solid #2a2a2a; color:#cfcfcf; padding:9px 11px; cursor:pointer; transition:all .2s;" style-hover="border-color:#4adeeb; color:#4adeeb;">⏭</button>
+        <span ref="{{ timeRef }}" style="color:#8a8a8a; font-size:8px; letter-spacing:1px;">00:00 / 01:02</span>
+        <span ref="{{ beatLabelRef }}" style="margin-left:auto; color:#5f8189; font-size:8px; letter-spacing:1px; max-width:44vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">01 · SIT BACK</span>
+        <button onclick="{{ skipShow }}" style="background:rgba(0,0,0,.5); border:1px solid #2a2a2a; color:#8a8a8a; padding:9px 12px; cursor:pointer; transition:all .2s;" style-hover="color:#ededed; border-color:#ededed;">EXIT ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EASTER EGG: GRAVITY FAILURE ===== -->
+  <sc-if value="{{ egg }}" hint-placeholder-val="{{ false }}">
+    <div data-egg-skip="" style="position:fixed; inset:0; z-index:5600; pointer-events:none; display:flex; align-items:flex-start; justify-content:center; padding-top:11vh;">
+      <div style="border:2px solid #ededed; background:rgba(0,0,0,.88); padding:22px 32px; text-align:center; box-shadow:0 0 60px rgba(0,0,0,.9); animation:alarmBlink .55s steps(2,end) infinite;">
+        <div style="font-family:'Press Start 2P',monospace; font-size:15px; letter-spacing:2px; color:#ededed;">!! GRAVITY FAILURE !!</div>
+        <div style="font-family:'Pixelify Sans',sans-serif; font-size:14px; letter-spacing:1px; color:#9a9a9a; margin-top:12px;">// physics module panicked — rewinding the tape</div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;enableBoot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;CRT / VHS&quot;,&quot;label&quot;:&quot;Power-on boot&quot;},&quot;scanlineIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.5,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;CRT / VHS&quot;,&quot;label&quot;:&quot;Scanline intensity&quot;},&quot;crtFlicker&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;CRT / VHS&quot;,&quot;label&quot;:&quot;VHS tape filter&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;CRT / VHS&quot;,&quot;label&quot;:&quot;Reduce motion&quot;}}">
+class Component extends DCLogic {
+  state = { project: null, egg: false, sent: false, watched: false, muted: false, showActive: false, dir: 'B' };
+
+  rootRef = React.createRef();
+  scanRef = React.createRef();
+  flickRef = React.createRef();
+  sweepRef = React.createRef();
+  bootRef = React.createRef();
+  heroRef = React.createRef();
+  navRef = React.createRef();
+  chRef = React.createRef();
+  showSecRef = React.createRef();
+  watchBtnRef = React.createRef();
+  projSecRef = React.createRef();
+  blackoutRef = React.createRef();
+  fistLRef = React.createRef();
+  fistRRef = React.createRef();
+  palmLRef = React.createRef();
+  palmRRef = React.createRef();
+  cardLRef = React.createRef();
+  cardRRef = React.createRef();
+  chooseRef = React.createRef();
+  railRef = React.createRef();
+  trackRef = React.createRef();
+  showRef = React.createRef();
+  bhRef = React.createRef();
+  capTitleRef = React.createRef();
+  capBodyRef = React.createRef();
+  progRef = React.createRef();
+  starRef = React.createRef();
+  gateRef = React.createRef();
+  capBoxRef = React.createRef();
+  ambRef = React.createRef();
+  ppRef = React.createRef();
+  timeRef = React.createRef();
+  scrubRef = React.createRef();
+  beatLabelRef = React.createRef();
+  scrubWrapRef = React.createRef();
+  dirARef = React.createRef();
+  dirBRef = React.createRef();
+  previewRef = React.createRef();
+
+  constructor(props) {
+    super(props);
+    this.onScroll = this.onScroll.bind(this);
+    this.onResize = this.onResize.bind(this);
+    this.onKey = this.onKey.bind(this);
+    this.tick = this.tick.bind(this);
+    this.showLoop = this.showLoop.bind(this);
+    this.raf = 0; this.showRaf = 0; this.starRaf = 0; this.fistsRaf = 0; this.eggRaf = 0;
+    this.keyBuf = [];
+    this.konami = ['arrowup','arrowup','arrowdown','arrowdown','arrowleft','arrowright','arrowleft','arrowright','b','a'];
+    this.bugTaps = 0; this.lastTap = 0;
+    this.fistsPlayed = false; this.eggOn = false;
+    this.capIdx = -1;
+    this.DUR = 62;
+    this.CAPS = [
+      [0,  'SIT BACK.', 'You have scrolled far enough. The rest of this site is on the other side of that thing.'],
+      [6,  'A DEAD STAR', 'A giant star ran out of fuel and collapsed under its own gravity, past the point where anything could hold it up. What is left is a hole in spacetime.'],
+      [13, 'THE ACCRETION DISK', 'That glow is not the hole. It is gas spiraling inward at nearly half the speed of light, heated white-hot by pure friction.'],
+      [20, 'GRAVITY BENDS LIGHT', 'The arc over the top is not above the hole. It is the BACK of the disk \u2014 its light bent around the hole and folded into your eyes.'],
+      [27, 'DOPPLER BEAMING', 'One side burns brighter. That gas is racing toward you, and relativity focuses its light like a headlamp. Physics, not a rendering bug.'],
+      [33, 'THE PHOTON SPHERE', 'This close, light itself orbits in circles \u2014 photons looping the hole forever. We are hovering one step above the point of no return.'],
+      [40, 'CROSSING THE HORIZON', 'Below this line, escaping would require moving faster than light. Nothing does. From here, every direction points inward.'],
+      [46, 'INSIDE', 'In here, space and time trade places. The singularity is not a place ahead of you \u2014 it is a moment in your future. You can no more avoid it than you can avoid tomorrow.'],
+      [54, 'LUCKILY \u2014', 'this one is a simulation. Rewinding you back out.'],
+      [58.5, '', '']
+    ];
+    this.K = {
+      dist:  [[0,30],[6,19],[13,12],[20,8.5],[27,6.6],[33,4.4],[40,2.6],[45,1.35],[46.5,0.6],[54,0.55],[56.5,10],[59,22],[62,30]],
+      yaw:   [[0,-0.4],[13,0.5],[27,1.8],[33,2.9],[40,4.0],[46,4.6],[54,5.0],[62,6.0]],
+      pitch: [[0,0.5],[13,0.16],[20,0.34],[27,0.1],[33,0.05],[40,0.02],[46,0],[54,0],[57,0.3],[62,0.5]],
+      inside:[[0,0],[45,0],[46.5,1],[53.5,1],[55.8,0]],
+      flash: [[0,0],[54.2,0],[55.6,0.9],[56.8,0]],
+      disk:  [[0,1],[46,1],[48,0.1],[55,0.1],[56.8,1]],
+      whoosh:[[0,0],[43,0],[45.5,0.3],[47.5,0.05],[54.8,0.05],[55.8,0.4],[57.5,0]]
+    };
+  }
+
+  componentDidMount() {
+    let muted = false;
+    try { muted = localStorage.getItem('vp_muted') === '1'; } catch (e) {}
+    this.setState({ watched: false, muted, dir: 'B' });
+    const q = (id) => this.rootRef.current.querySelector('[data-id="' + id + '"]');
+    this.secEls = { hero: q('hero'), about: q('about'), show: q('show'), projects: q('projects'), rail: q('rail'), contact: q('contact') };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this._firstPointer = () => { this.initAudio(); this.resumeAC(); };
+    window.addEventListener('pointerdown', this._firstPointer, { once: true });
+    window.__vc = this;
+    this.applyTweaks();
+    this.initStars();
+    this.initAmbient();
+    this.initPreview();
+    this.initReveals();
+    this.updateDirUI();
+    this.fio = new IntersectionObserver((es) => es.forEach(en => { if (en.isIntersecting && this.state.watched && !this.fistsPlayed) this.playFists(); }), { threshold: 0.4 });
+    if (this.projSecRef.current) this.fio.observe(this.projSecRef.current);
+    this.cacheLayout();
+    this.update();
+    [250, 900, 1800, 3200].forEach(ms => setTimeout(() => { this.cacheLayout(); this.update(); if (this.gsapReady && window.ScrollTrigger) window.ScrollTrigger.refresh(); }, ms));
+    window.addEventListener('load', () => { this.cacheLayout(); this.update(); }, { once: true });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.applyTweaks(); this.syncGate();
+    if (prevState && prevState.dir !== this.state.dir) {
+      this.updateDirUI();
+      if (this.gsapReady) this.setupReveals();
+      if (this.state.showActive) this.showRate = this.state.dir === 'A' ? 0.9 : 1.05;
+    }
+    if (prevProps && this.props && prevProps.reduceMotion !== this.props.reduceMotion && this.gsapReady) this.setupReveals();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('pointerdown', this._firstPointer);
+    cancelAnimationFrame(this.raf); cancelAnimationFrame(this.showRaf);
+    cancelAnimationFrame(this.starRaf); cancelAnimationFrame(this.fistsRaf); cancelAnimationFrame(this.eggRaf);
+    cancelAnimationFrame(this.ambRaf); cancelAnimationFrame(this.prevRaf);
+    if (this._revTriggers) this._revTriggers.forEach(t => t.kill());
+    clearTimeout(this.capTm);
+    if (this.fio) this.fio.disconnect();
+    if (this.ac) { try { this.ac.close(); } catch (e) {} }
+    document.body.style.overflow = '';
+  }
+
+  applyTweaks() {
+    const p = this.props || {};
+    const rm = !!p.reduceMotion;
+    if (this.scanRef.current) this.scanRef.current.style.opacity = String(p.scanlineIntensity ?? 0.5);
+    const run = (ref, on) => { if (ref.current) ref.current.style.animationPlayState = on ? 'running' : 'paused'; };
+    run(this.scanRef, !rm); run(this.sweepRef, !rm);
+    const flickOn = (p.crtFlicker ?? true) && !rm;
+    if (this.flickRef.current) { this.flickRef.current.style.animationPlayState = flickOn ? 'running' : 'paused'; this.flickRef.current.style.opacity = flickOn ? '' : '0'; }
+    if (this.rootRef.current) this.rootRef.current.querySelectorAll('[data-glitch]').forEach(el => { el.style.animationPlayState = rm ? 'paused' : 'running'; });
+    if (this.bootRef.current) this.bootRef.current.style.display = (p.enableBoot ?? true) ? '' : 'none';
+  }
+
+  /* ===== SCROLL REVEALS (GSAP) ===== */
+  initReveals() {
+    let n = 0;
+    const tryit = () => {
+      if (window.gsap && window.ScrollTrigger) { this.gsapReady = true; this.setupReveals(); return; }
+      if (n++ > 100) return;
+      setTimeout(tryit, 50);
+    };
+    tryit();
+  }
+  setupReveals() {
+    if (!(window.gsap && window.ScrollTrigger) || !this.rootRef.current) return;
+    const gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+    gsap.registerPlugin(ScrollTrigger);
+    if (this._revTriggers) { this._revTriggers.forEach(t => t.kill()); this._revTriggers = null; }
+    const els = Array.from(this.rootRef.current.querySelectorAll('[data-reveal]'))
+      .filter(el => !el.closest('[data-egg-skip]') && el.offsetParent !== null);
+    if (!els.length) return;
+    const rm = this.props && this.props.reduceMotion;
+    if (rm) { gsap.set(els, { opacity: 1, x: 0, y: 0, filter: 'none', clearProps: 'transform,filter' }); return; }
+    const dir = this.state.dir;
+    const y0 = dir === 'B' ? 18 : 36, b0 = dir === 'B' ? 'blur(3px)' : 'blur(10px)';
+    gsap.set(els, { opacity: 0, y: y0, filter: b0 });
+    const self = this;
+    const reveal = (batch) => {
+      if (dir === 'B') {
+        gsap.to(batch, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out', stagger: 0.07, onStart: function () { batch.forEach(el => self.glitchIn(el)); } });
+      } else {
+        gsap.to(batch, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.05, ease: 'power3.out', stagger: 0.13 });
+      }
+    };
+    this._revTriggers = ScrollTrigger.batch(els, { start: 'top 86%', once: true, onEnter: reveal });
+    const vh = window.innerHeight;
+    const shown = els.filter(el => el.getBoundingClientRect().top < vh * 0.9);
+    if (shown.length) gsap.set(shown, { opacity: 1, y: 0, filter: 'blur(0px)' });
+    ScrollTrigger.refresh();
+  }
+  glitchIn(el) {
+    const gsap = window.gsap; if (!gsap) return;
+    const orig = el.style.textShadow || '';
+    gsap.timeline()
+      .set(el, { textShadow: '2px 0 rgba(74,222,235,.85), -2px 0 rgba(255,70,70,.7)' })
+      .to(el, { x: 4, duration: 0.045, ease: 'steps(1)' })
+      .to(el, { x: -4, duration: 0.045, ease: 'steps(1)' })
+      .to(el, { x: 2, duration: 0.045, ease: 'steps(1)' })
+      .to(el, { x: 0, duration: 0.05 })
+      .to(el, { duration: 0.22, onComplete: () => { el.style.textShadow = orig; } });
+  }
+
+  /* ===== AMBIENT BLACK HOLE ===== */
+  initAmbient() {
+    const cv = this.ambRef.current; if (!cv) return;
+    if (!window.BlackHole) { this._ambTries = (this._ambTries || 0) + 1; if (this._ambTries < 100) setTimeout(() => this.initAmbient(), 120); return; }
+    const bh = new window.BlackHole(cv);
+    if (!bh.ok) return;
+    bh.renderScale = 0.7; bh.resize();
+    this.amb = bh;
+    // WebGL background is opaque and covers the fallback layers — drop the 2D starfield
+    if (this.starRef.current) this.starRef.current.style.display = 'none';
+    cancelAnimationFrame(this.starRaf);
+    this.ambLoop = this.ambLoop.bind(this);
+    this.ambRaf = requestAnimationFrame(this.ambLoop);
+  }
+  ambLoop(t) {
+    this.ambRaf = requestAnimationFrame(this.ambLoop);
+    const cv = this.ambRef.current; if (!cv || !this.amb) return;
+    if (this.state.showActive || document.hidden) { if (cv.style.opacity !== '0') cv.style.opacity = '0'; return; }
+    const cw = cv.clientWidth, ch = cv.clientHeight;
+    if (cw && ch && (cw !== this._ambCW || ch !== this._ambCH)) { this._ambCW = cw; this._ambCH = ch; this.amb.resize(); }
+    if (cv.style.opacity !== '1') cv.style.opacity = '1';
+    const rm = this.props && this.props.reduceMotion;
+    if (t - (this._ambLast || 0) < (rm ? 200 : 33)) return;
+    this._ambLast = t;
+    const e = t / 1000;
+    const drift = rm ? 0 : e * 0.006;
+    // background-only pass: the exact starfield/nebula from the show, slowly panning
+    this.amb.render({ time: e * 0.5, dist: 30, yaw: 0.35 + drift, pitch: 0.16, bgOnly: 1, inside: 0, flash: 0, disk: 0, bright: 1.3, spin: 0, lens: 1.0 });
+  }
+
+  /* ===== SHOW PREVIEW (live mini black hole) ===== */
+  initPreview() {
+    const cv = (this.previewRef && this.previewRef.current) || document.querySelector('[data-preview-canvas]');
+    if (!cv) return;
+    if (!window.BlackHole) { this._prevTries = (this._prevTries || 0) + 1; if (this._prevTries < 100) setTimeout(() => this.initPreview(), 120); return; }
+    this._prevCv = cv;
+    let bh = null;
+    try { bh = new window.BlackHole(cv); } catch (e) { return; }
+    if (!bh || !bh.ok) return;
+    bh.renderScale = 0.8; bh.resize();
+    this.prev = bh;
+    this.prevLoop = this.prevLoop.bind(this);
+    this.prevRaf = requestAnimationFrame(this.prevLoop);
+  }
+  prevLoop(t) {
+    this.prevRaf = requestAnimationFrame(this.prevLoop);
+    const cv = this._prevCv; if (!cv || !this.prev) return;
+    if (this.state.showActive || document.hidden) return;
+    const r = cv.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight || r.width === 0) return;
+    if (r.width !== this._prevCW || r.height !== this._prevCH) { this._prevCW = r.width; this._prevCH = r.height; this.prev.resize(); }
+    const rm = this.props && this.props.reduceMotion;
+    if (t - (this._prevLast || 0) < (rm ? 200 : 33)) return;
+    this._prevLast = t;
+    const e = t / 1000;
+    this.prev.render({ time: e, dist: 15, yaw: 0.6 + (rm ? 0 : e * 0.02), pitch: 0.14, inside: 0, flash: 0, disk: 1, bright: 1.15, spin: 0.5, lens: 1.0, bgOnly: 0 });
+  }
+
+  /* ===== MOTION DIRECTION ===== */
+  setDir(d) {
+    if (this.state.dir === d) return;
+    try { localStorage.setItem('vp_dir', d); } catch (e) {}
+    this.setState({ dir: d });
+  }
+  updateDirUI() {
+    const d = this.state.dir;
+    const set = (ref, active) => { const el = ref.current; if (!el) return; el.style.color = active ? '#031012' : '#cfcfcf'; el.style.background = active ? '#4adeeb' : 'transparent'; };
+    set(this.dirARef, d === 'A'); set(this.dirBRef, d === 'B');
+  }
+
+  clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  lerp(a, b, t) { return a + (b - a) * t; }
+  map(v, a, b, c, d) { return this.lerp(c, d, this.clamp((v - a) / (b - a), 0, 1)); }
+  kf(t, pts) {
+    if (t <= pts[0][0]) return pts[0][1];
+    for (let i = 1; i < pts.length; i++) {
+      if (t < pts[i][0]) { const a = pts[i - 1], b = pts[i]; let f = (t - a[0]) / (b[0] - a[0]); f = f * f * (3 - 2 * f); return a[1] + (b[1] - a[1]) * f; }
+    }
+    return pts[pts.length - 1][1];
+  }
+
+  onResize() { if (this._starFit) this._starFit(); if (this.amb) this.amb.resize(); if (this.bh && this.state.showActive) this.bh.resize(); this.cacheLayout(); this.update(); }
+  onScroll() { if (this.raf) return; this.raf = requestAnimationFrame(this.tick); }
+  tick() { this.raf = 0; this.update(); }
+
+  cacheLayout() {
+    if (!this.secEls) return;
+    const vh = window.innerHeight;
+    this.navEls = this.navRef.current ? Array.from(this.navRef.current.querySelectorAll('[data-nav]')) : [];
+    const pos = (id) => { const el = this.secEls[id]; return (el && el.offsetParent !== null) ? el.offsetTop : 1e9; };
+    const rail = this.railRef.current;
+    const open = this.state.watched;
+    this.railTop = (rail && open) ? rail.offsetTop : 1e9;
+    this.railTravel = rail ? Math.max(1, rail.offsetHeight - vh) : 1;
+    this.secPoints = open
+      ? [pos('hero'), pos('about'), pos('show'), pos('projects'), this.railTop, this.railTop + this.railTravel * 0.34, this.railTop + this.railTravel * 0.75, pos('contact')]
+      : [pos('hero'), pos('about'), pos('show'), 1e9, 1e9, 1e9, 1e9, 1e9];
+    this.lastIdx = -1;
+  }
+
+  syncGate() {
+    const g = this.gateRef.current; if (!g) return;
+    const want = this.state.watched ? '' : 'none';
+    if (g.style.display !== want) {
+      g.style.display = want;
+      requestAnimationFrame(() => { this.cacheLayout(); this.update(); if (this.gsapReady) this.setupReveals(); if (window.ScrollTrigger) window.ScrollTrigger.refresh(); });
+    }
+  }
+
+  update() {
+    if (!this.secPoints) return;
+    if (this.state.watched && this.railRef.current && this.railRef.current.offsetParent && this.railTop < 100 && this.railRef.current.offsetTop > 100) { this.cacheLayout(); }
+    const vh = window.innerHeight, vw = window.innerWidth;
+    const sy = window.scrollY;
+    if (this.state.watched && this.trackRef.current && this.railTop < 1e8) {
+      const rp = this.clamp((sy - this.railTop) / this.railTravel, 0, 1);
+      this.trackRef.current.style.transform = 'translate3d(' + (-rp * 2 * vw) + 'px,0,0)';
+    }
+    const y = sy + vh * 0.42;
+    let idx = 0;
+    for (let i = 0; i < this.secPoints.length; i++) { if (y >= this.secPoints[i]) idx = i; }
+    if (idx === this.lastIdx) return;
+    this.lastIdx = idx;
+    const labels = ['HERO', 'ABOUT', 'SHOW', 'PROJECTS', 'SIDE', 'SKILLS', 'PAST', 'CONTACT'];
+    (this.navEls || []).forEach((it, i) => {
+      const on = i === idx;
+      const locked = !this.state.watched && i >= 3;
+      it.style.opacity = locked ? '.35' : '1';
+      it.style.color = on ? '#ededed' : '#5a5a5a';
+      const dot = it.querySelector('[data-dot]');
+      if (dot) { dot.style.background = on ? '#4adeeb' : 'transparent'; dot.style.boxShadow = on ? '0 0 10px rgba(74,222,235,.85)' : 'none'; dot.style.borderColor = on ? '#4adeeb' : 'currentColor'; dot.style.width = on ? '14px' : '8px'; }
+    });
+    if (this.chRef.current) this.chRef.current.textContent = 'CH ' + String(idx + 1).padStart(2, '0') + ' \u00b7 ' + labels[idx];
+  }
+
+  navGo(key) {
+    if (!this.state.watched && ['projects', 'side', 'skills', 'past', 'contact'].indexOf(key) >= 0) {
+      window.scrollTo({ top: this.secEls.show.offsetTop, behavior: 'smooth' });
+      this.pulseWatch();
+      return;
+    }
+    let top = 0;
+    if (key === 'side') top = this.railTop;
+    else if (key === 'skills') top = this.railTop + this.railTravel * 0.5;
+    else if (key === 'past') top = this.railTop + this.railTravel;
+    else top = this.secEls[key] ? this.secEls[key].offsetTop : 0;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+  pulseWatch() {
+    const b = this.watchBtnRef.current; if (!b) return;
+    if (this._pulsing) return;
+    this._pulsing = true;
+    b.style.animation = 'pulseBtn .9s ease 2';
+    setTimeout(() => { b.style.animation = ''; this._pulsing = false; }, 1900);
+  }
+
+  /* ===== STARFIELD ===== */
+  initStars() {
+    const cv = this.starRef.current; if (!cv) return;
+    this.sctx = cv.getContext('2d');
+    this.starLoop = this.starLoop.bind(this);
+    this._starFit = () => { cv.width = window.innerWidth; cv.height = window.innerHeight; this.buildStars(); };
+    this._starFit();
+    this.starRaf = requestAnimationFrame(this.starLoop);
+  }
+  buildStars() {
+    const cv = this.starRef.current;
+    const n = Math.min(320, Math.round((cv.width * cv.height) / 9000));
+    this.stars = Array.from({ length: n }, () => {
+      const big = Math.random() < 0.08;
+      return { x: Math.random() * cv.width, y: Math.random() * cv.height, z: Math.random() * 0.8 + 0.2, r: big ? 3 : (Math.random() < 0.28 ? 2 : 1), big, tw: Math.random() * Math.PI * 2, ts: Math.random() * 0.02 + 0.004 };
+    });
+  }
+  starLoop(t) {
+    this.starRaf = requestAnimationFrame(this.starLoop);
+    if (this.state.showActive) return;
+    if (t - (this._lastStar || 0) < 33) return;
+    this._lastStar = t;
+    const ctx = this.sctx, cv = this.starRef.current; if (!ctx || !this.stars) return;
+    const rm = this.props && this.props.reduceMotion;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    const sc = window.scrollY || 0;
+    for (const s of this.stars) {
+      if (!rm) s.tw += s.ts * 2;
+      const py = s.y - sc * 0.035 * s.z;
+      const yy = ((py % cv.height) + cv.height) % cv.height;
+      const a = (0.6 + 0.4 * (0.5 + 0.5 * Math.sin(s.tw))) * (0.55 + s.z * 0.45);
+      ctx.globalAlpha = Math.min(1, a);
+      if (s.big) {
+        ctx.fillStyle = 'rgba(74,222,235,.22)';
+        ctx.fillRect(s.x - 2, yy - 2, s.r + 4, s.r + 4);
+        ctx.fillStyle = '#d6f6ff';
+        ctx.fillRect(s.x, yy, s.r, s.r);
+      } else { ctx.fillStyle = s.z > 0.72 ? '#c8f2ff' : '#eef8ff'; ctx.fillRect(s.x, yy, s.r, s.r); }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  /* ===== AUDIO (all synthesized, no files) ===== */
+  initAudio() {
+    if (this.ac) return;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    const ac = this.ac = new AC();
+    this.master = ac.createGain(); this.master.gain.value = this.state.muted ? 0 : 0.85; this.master.connect(ac.destination);
+    const len = ac.sampleRate * 2, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; }
+    const hum = ac.createOscillator(); hum.type = 'triangle'; hum.frequency.value = 48;
+    const humG = ac.createGain(); humG.gain.value = 0.012;
+    hum.connect(humG); humG.connect(this.master); hum.start();
+    const amb = ac.createBufferSource(); amb.buffer = buf; amb.loop = true;
+    const ambF = ac.createBiquadFilter(); ambF.type = 'lowpass'; ambF.frequency.value = 110;
+    const ambG = ac.createGain(); ambG.gain.value = 0.045;
+    amb.connect(ambF); ambF.connect(ambG); ambG.connect(this.master); amb.start();
+    const rum = ac.createBufferSource(); rum.buffer = buf; rum.loop = true;
+    this.rumF = ac.createBiquadFilter(); this.rumF.type = 'lowpass'; this.rumF.frequency.value = 60;
+    this.rumG = ac.createGain(); this.rumG.gain.value = 0;
+    rum.connect(this.rumF); this.rumF.connect(this.rumG); this.rumG.connect(this.master); rum.start();
+    const wh = ac.createBufferSource(); wh.buffer = buf; wh.loop = true;
+    this.whF = ac.createBiquadFilter(); this.whF.type = 'bandpass'; this.whF.frequency.value = 650; this.whF.Q.value = 0.8;
+    this.whG = ac.createGain(); this.whG.gain.value = 0;
+    wh.connect(this.whF); this.whF.connect(this.whG); this.whG.connect(this.master); wh.start();
+  }
+  resumeAC() { if (this.ac && this.ac.state === 'suspended') this.ac.resume(); }
+  tone(freq, dur, type, vol, slideTo) {
+    if (!this.ac || this.state.muted) return;
+    const t = this.ac.currentTime;
+    const o = this.ac.createOscillator(), g = this.ac.createGain();
+    o.type = type || 'square'; o.frequency.setValueAtTime(freq, t);
+    if (slideTo) o.frequency.exponentialRampToValueAtTime(Math.max(1, slideTo), t + dur);
+    g.gain.setValueAtTime(vol || 0.05, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(this.master);
+    o.start(t); o.stop(t + dur + 0.03);
+  }
+  toggleMute() {
+    const muted = !this.state.muted;
+    this.setState({ muted });
+    try { localStorage.setItem('vp_muted', muted ? '1' : '0'); } catch (e) {}
+    if (!this.ac && !muted) { this.initAudio(); this.resumeAC(); }
+    if (this.ac) this.master.gain.setTargetAtTime(muted ? 0 : 0.85, this.ac.currentTime, 0.05);
+  }
+
+  /* ===== THE SHOW (user-controlled) ===== */
+  startShow() {
+    if (this.state.showActive) return;
+    this.initAudio(); this.resumeAC();
+    this.setState({ showActive: true });
+    document.body.style.overflow = 'hidden';
+    const ov = this.showRef.current;
+    if (ov) { ov.style.pointerEvents = 'auto'; ov.style.opacity = '1'; }
+    if (!this.bh && window.BlackHole && this.bhRef.current) {
+      const bh = new window.BlackHole(this.bhRef.current);
+      this.bh = bh.ok ? bh : null;
+    } else if (this.bh) { this.bh.resize(); }
+    this.capIdx = -1;
+    if (this.capTitleRef.current) { this.capTitleRef.current.textContent = ''; this.capBodyRef.current.textContent = ''; }
+    this.showTime = 0; this.showReal = 0; this.playing = true; this.scrubbing = false;
+    this.showRate = this.state.dir === 'A' ? 0.9 : 1.05;
+    this._showLast = performance.now() / 1000;
+    this.updatePP();
+    cancelAnimationFrame(this.showRaf);
+    this.showRaf = requestAnimationFrame(this.showLoop);
+  }
+  showLoop(t) {
+    if (!this.state.showActive) return;
+    this.showRaf = requestAnimationFrame(this.showLoop);
+    const now = t / 1000;
+    const dt = Math.min(0.05, Math.max(0, now - (this._showLast || now)));
+    this._showLast = now;
+    this.showReal += dt;
+    if (this.playing && !this.scrubbing) {
+      this.showTime = Math.min(this.DUR, this.showTime + dt * (this.showRate || 1));
+      if (this.showTime >= this.DUR) { this.playing = false; this.updatePP(); this.onShowComplete(); }
+    }
+    this.renderShowFrame(this.showTime);
+    this.updateTransport();
+  }
+  renderShowFrame(e) {
+    const K = this.K;
+    const dist = this.kf(e, K.dist);
+    const yaw = this.kf(e, K.yaw) + e * 0.04;
+    const pitch = this.kf(e, K.pitch);
+    const inside = this.kf(e, K.inside);
+    const flash = this.kf(e, K.flash);
+    const disk = this.kf(e, K.disk);
+    if (this.bh) this.bh.render({ time: this.showReal, dist, yaw, pitch, inside, flash, disk, bright: 1.05, spin: 1.0, lens: 1.0 });
+    let ci = 0;
+    for (let i = 0; i < this.CAPS.length; i++) { if (e >= this.CAPS[i][0]) ci = i; }
+    if (ci !== this.capIdx) {
+      this.capIdx = ci;
+      const cap = this.CAPS[ci];
+      const T = this.capTitleRef.current, B = this.capBodyRef.current;
+      if (T && B) {
+        T.style.opacity = '0'; B.style.opacity = '0';
+        const box = this.capBoxRef.current;
+        clearTimeout(this.capTm);
+        this.capTm = setTimeout(() => { T.textContent = cap[1]; B.textContent = cap[2]; T.style.opacity = '1'; B.style.opacity = '1'; if (box) box.style.opacity = cap[1] ? '1' : '0'; }, 220);
+      }
+    }
+    if (this.ac && this.rumG) {
+      const ct = this.ac.currentTime;
+      const v = this.clamp((24 - dist) / 24, 0, 1) * 0.5 + inside * 0.3;
+      this.rumG.gain.setTargetAtTime(this.playing ? v : v * 0.55, ct, 0.15);
+      this.rumF.frequency.setTargetAtTime(40 + v * 130, ct, 0.2);
+      this.whG.gain.setTargetAtTime(this.playing ? this.kf(e, K.whoosh) : 0, ct, 0.12);
+    }
+  }
+  updateTransport() {
+    const e = this.showTime || 0, f = e / this.DUR;
+    if (this.progRef.current) this.progRef.current.style.width = (f * 100) + '%';
+    if (this.scrubRef.current && !this.scrubbing) this.scrubRef.current.value = String(Math.round(f * 1000));
+    if (this.timeRef.current) this.timeRef.current.textContent = this.fmt(e) + ' / ' + this.fmt(this.DUR);
+    if (this.beatLabelRef.current) {
+      let ci = 0; for (let i = 0; i < this.CAPS.length; i++) { if (e >= this.CAPS[i][0]) ci = i; }
+      const lab = this.CAPS[ci][1] || '\u2026';
+      this.beatLabelRef.current.textContent = String(ci + 1).padStart(2, '0') + ' \u00b7 ' + lab;
+    }
+  }
+  fmt(s) { s = Math.max(0, Math.round(s)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  updatePP() { if (this.ppRef.current) this.ppRef.current.innerHTML = this.playing ? '&#9208;' : '&#9654;'; }
+  togglePlay() {
+    if (!this.state.showActive) return;
+    if (this.showTime >= this.DUR) { this.showTime = 0; this.showReal = 0; this.capIdx = -1; }
+    this.playing = !this.playing;
+    if (this.playing) this.resumeAC();
+    this.updatePP();
+  }
+  seekFrac(f) { this.showTime = this.clamp(f, 0, 1) * this.DUR; this.renderShowFrame(this.showTime); this.updateTransport(); }
+  onScrub(e) { this.showTime = this.clamp((+e.target.value) / 1000, 0, 1) * this.DUR; this.renderShowFrame(this.showTime); this.updateTransport(); }
+  onScrubDown() { this.scrubbing = true; this._wasPlaying = this.playing; this.playing = false; this.updatePP(); }
+  onScrubUp() { this.scrubbing = false; if (this._wasPlaying) { this.playing = true; this.updatePP(); } }
+  jumpTo(t) { this.showTime = this.clamp(t, 0, this.DUR); this.renderShowFrame(this.showTime); this.updateTransport(); }
+  nextBeat() { const t = this.showTime + 0.05; let nt = this.DUR; for (const c of this.CAPS) { if (c[0] > t) { nt = c[0]; break; } } this.jumpTo(nt); }
+  prevBeat() { const t = this.showTime - 0.05; let pt = 0; for (const c of this.CAPS) { if (c[0] < t) pt = c[0]; } this.jumpTo(pt); }
+  onShowComplete() {
+    if (!this.state.watched) { try { localStorage.setItem('vp_watched', '1'); } catch (e) {} this.setState({ watched: true }); }
+    if (this.beatLabelRef.current) this.beatLabelRef.current.textContent = 'END \u00b7 THE VOID RELEASES YOU';
+  }
+  skipShow() { this.endShow(true); }
+  endShow(skipped) {
+    if (!this.state.showActive) return;
+    this.playing = false;
+    cancelAnimationFrame(this.showRaf); this.showRaf = 0;
+    clearTimeout(this.capTm);
+    if (this.ac && this.rumG) { const ct = this.ac.currentTime; this.rumG.gain.setTargetAtTime(0, ct, 0.3); this.whG.gain.setTargetAtTime(0, ct, 0.2); }
+    const ov = this.showRef.current;
+    if (ov) { ov.style.opacity = '0'; ov.style.pointerEvents = 'none'; }
+    try { localStorage.setItem('vp_watched', '1'); } catch (e) {}
+    document.body.style.overflow = '';
+    this.setState({ watched: true, showActive: false });
+    if (this.blackoutRef.current) this.blackoutRef.current.style.setProperty('--o', 1);
+    setTimeout(() => {
+      const p = this.secEls.projects; if (!p) return;
+      window.scrollTo({ top: p.offsetTop, behavior: 'auto' });
+      setTimeout(() => this.playFists(true), 300);
+    }, 400);
+  }
+
+  /* ===== FISTS AUTO-CHOREOGRAPHY (time-driven) ===== */
+  playFists(force) {
+    if (this.fistsPlayed && !force) return;
+    this.fistsPlayed = true;
+    cancelAnimationFrame(this.fistsRaf);
+    const vh = window.innerHeight, vw = window.innerWidth;
+    const setV = (ref, o, x, y, s) => { const el = ref.current; if (!el) return; el.style.setProperty('--o', o); el.style.setProperty('--x', x + 'px'); el.style.setProperty('--y', y + 'px'); if (s != null) el.style.setProperty('--s', s); };
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    const easeInOut = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    // Phases: blackout on -> fists fade in & hold still -> descend + swap to palms -> blackout off -> cards in -> idle drift
+    const T_HOLD = 3.0, T_DOWN = 4.2, T_BG = 5.0, T_CARDS = 5.4, T_SETTLE = 6.6;
+    const blk = this.blackoutRef.current;
+    if (blk) blk.style.setProperty('--o', 1);
+    let thudded = false;
+    const t0 = performance.now();
+    const loop = (now) => {
+      const t = (now - t0) / 1000;
+      const fistY = -vh * 0.06, sp0 = Math.max(vw * 0.12, 190);
+      if (t < T_HOLD) {
+        // fists fade in and hold, motionless, on pure black
+        const o = this.clamp(t / 0.5, 0, 1);
+        setV(this.fistLRef, o, -sp0, fistY, 0.9);
+        setV(this.fistRRef, o, sp0, fistY, 0.9);
+        setV(this.palmLRef, 0, -sp0, fistY, 0.84);
+        setV(this.palmRRef, 0, sp0, fistY, 0.84);
+      } else {
+        if (!thudded) { thudded = true; this.tone(52, 0.5, 'sine', 0.22, 26); this.tone(160, 0.14, 'square', 0.06, 60); }
+        // fists travel down and dissolve into open palms
+        const k = easeInOut(this.clamp((t - T_HOLD) / (T_DOWN - T_HOLD), 0, 1));
+        const fade = this.clamp((t - T_HOLD - 0.35) / 0.55, 0, 1);
+        const y = this.lerp(fistY, vh * 0.19, k);
+        const sp = this.lerp(sp0, vw * 0.235, easeOut(this.clamp((t - T_HOLD - 0.2) / (T_DOWN - T_HOLD), 0, 1)));
+        setV(this.fistLRef, 1 - fade, -sp, y, 0.9);
+        setV(this.fistRRef, 1 - fade, sp, y, 0.9);
+        const sc = this.lerp(0.84, 1.05, k);
+        setV(this.palmLRef, fade, -sp, y, sc);
+        setV(this.palmRRef, fade, sp, y, sc);
+      }
+      // background returns before the cards appear
+      if (blk) blk.style.setProperty('--o', 1 - this.clamp((t - T_DOWN) / (T_BG - T_DOWN), 0, 1));
+      if (this.chooseRef.current) this.chooseRef.current.style.setProperty('--o', this.clamp((t - T_BG) / 0.8, 0, 1));
+      const cop = this.clamp((t - T_CARDS) / (T_SETTLE - T_CARDS), 0, 1);
+      const cy = this.lerp(46, 0, easeOut(cop));
+      // idle drift: palms + cards keep breathing after settle
+      const bob = (ph) => Math.sin(t * 1.3 + ph) * 7 * this.clamp((t - T_CARDS) / 1.4, 0, 1);
+      if (t > T_DOWN) {
+        const py = vh * 0.19 + bob(2.1) * 0.6;
+        setV(this.palmLRef, 1, -vw * 0.235, py, 1.05 + Math.sin(t * 1.3) * 0.008);
+        setV(this.palmRRef, 1, vw * 0.235, py, 1.05 + Math.sin(t * 1.3) * 0.008);
+      }
+      [this.cardLRef, this.cardRRef].forEach((ref, i) => {
+        const el = ref.current; if (!el) return;
+        el.style.setProperty('--o', cop);
+        el.style.setProperty('--x', ((i === 0 ? -1 : 1) * vw * 0.215 + Math.sin(t * 0.9 + i * 2.6) * 4 * cop) + 'px');
+        el.style.setProperty('--y', (-vh * 0.06 + cy + bob(i * Math.PI)) + 'px');
+        el.style.pointerEvents = cop > 0.6 ? 'auto' : 'none';
+      });
+      this.fistsRaf = requestAnimationFrame(loop);
+    };
+    this.fistsRaf = requestAnimationFrame(loop);
+  }
+
+  /* ===== EASTER EGG: GRAVITY FAILURE ===== */
+  onKey(e) {
+    if (this.state.showActive) {
+      if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); this.togglePlay(); return; }
+      if (e.key === 'ArrowRight') { e.preventDefault(); this.seekFrac((this.showTime + 3) / this.DUR); return; }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); this.seekFrac((this.showTime - 3) / this.DUR); return; }
+      if (e.key === 'Escape') { this.skipShow(); return; }
+      return;
+    }
+    const k = e.key.toLowerCase();
+    this.keyBuf.push(k);
+    if (this.keyBuf.length > this.konami.length) this.keyBuf.shift();
+    if (this.keyBuf.length === this.konami.length && this.konami.every((v, i) => this.keyBuf[i] === v)) { this.keyBuf = []; this.triggerEgg(); }
+  }
+  bugTap() {
+    const now = performance.now();
+    if (now - this.lastTap > 800) this.bugTaps = 0;
+    this.lastTap = now;
+    this.bugTaps++;
+    this.tone(200 + this.bugTaps * 70, 0.08, 'square', 0.045);
+    if (this.bugTaps >= 5) { this.bugTaps = 0; this.triggerEgg(); }
+  }
+  triggerEgg() {
+    if (this.eggOn || this.state.showActive) return;
+    this.eggOn = true;
+    this.initAudio(); this.resumeAC();
+    this.setState({ egg: true });
+    this.tone(70, 0.9, 'sawtooth', 0.14, 28);
+    const vh = window.innerHeight, vw = window.innerWidth;
+    const sel = 'h1,h2,h3,p,img,button,a,[data-stat],[data-card],[data-nav],input,textarea';
+    const els = [];
+    this.rootRef.current.querySelectorAll(sel).forEach(el => {
+      if (els.length >= 70) return;
+      if (el.closest('[data-egg-skip]')) return;
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw || r.width < 4 || r.height < 4) return;
+      for (const o of els) { if (o.el.contains(el) || el.contains(o.el)) return; }
+      els.push({ el, base: el.style.transform || '', vx: (Math.random() * 2 - 1) * 170, vr: (Math.random() * 2 - 1) * 280, delay: Math.random() * 0.4, g: 2200 + Math.random() * 1600 });
+      el.style.willChange = 'transform';
+    });
+    if (!els.length) { this.setState({ egg: false }); this.eggOn = false; return; }
+    const FALL = 2.3, HOLD = 0.7, REW = 1.15;
+    const t0 = performance.now();
+    let rewCued = false;
+    const loop = (now) => {
+      const t = (now - t0) / 1000;
+      let k;
+      if (t < FALL) { k = t; }
+      else if (t < FALL + HOLD) { k = FALL; }
+      else if (t < FALL + HOLD + REW) {
+        if (!rewCued) { rewCued = true; this.tone(110, 1.1, 'square', 0.07, 950); }
+        const u = 1 - (t - FALL - HOLD) / REW;
+        k = FALL * (u * u * (3 - 2 * u));
+      } else {
+        els.forEach(o => { o.el.style.transform = o.base; o.el.style.willChange = ''; });
+        this.tone(700, 0.16, 'square', 0.06, 900);
+        this.setState({ egg: false });
+        this.eggOn = false;
+        return;
+      }
+      for (const o of els) {
+        const tt = Math.max(0, k - o.delay);
+        const dy = 0.5 * o.g * tt * tt;
+        o.el.style.transform = o.base + ' translate(' + (o.vx * tt) + 'px, ' + dy + 'px) rotate(' + (o.vr * tt) + 'deg)';
+      }
+      this.eggRaf = requestAnimationFrame(loop);
+    };
+    cancelAnimationFrame(this.eggRaf);
+    this.eggRaf = requestAnimationFrame(loop);
+  }
+
+  /* ===== PROJECT OVERLAY / CONTACT ===== */
+  openProject(p) { document.body.style.overflow = 'hidden'; this.setState({ project: p }); }
+  closeProject() { document.body.style.overflow = ''; this.setState({ project: null }); }
+  onContact(e) { e.preventDefault(); this.tone(880, 0.12, 'square', 0.05); this.setState({ sent: true }); }
+  resetContact() { this.setState({ sent: false }); }
+
+  renderVals() {
+    const keys = ['hero', 'about', 'show', 'projects', 'side', 'skills', 'past', 'contact'];
+    const labels = ['HERO', 'ABOUT', 'SHOW', 'PROJECTS', 'SIDE', 'SKILLS', 'PAST', 'CONTACT'];
+    const navItems = keys.map((k, i) => ({ num: String(i + 1).padStart(2, '0'), label: labels[i], go: () => this.navGo(k) }));
+
+    const pL = {
+      tag: 'PLATFORM', year: '2025', name: 'NULLPOINT', mono: 'NP', role: 'LEAD ENGINEER',
+      summary: 'A real-time collaboration layer that runs where nothing else will.',
+      body: [
+        'NULLPOINT is the connective tissue for software that has to stay in sync across the planet. It keeps thousands of clients perfectly aligned without a central source of truth to fall back on.',
+        'Built around a conflict-free replicated core, it treats latency as a feature, not a bug. State converges no matter how badly the network behaves.'
+      ],
+      tech: ['TypeScript', 'WebSockets', 'Rust', 'WebGL', 'Postgres'],
+      highlights: ['12k concurrent sockets with zero dropped frames', 'Sub-40ms sync across continents', 'Shipped solo in 90 days'],
+      links: [{ label: 'LIVE', href: '#' }, { label: 'SOURCE', href: '#' }]
+    };
+    const pR = {
+      tag: 'ENGINE', year: '2024', name: 'EVENT HORIZON', mono: 'EH', role: 'CREATOR',
+      summary: 'A rendering engine for data that refuses to be visualized.',
+      body: [
+        'EVENT HORIZON takes datasets too large and too dense for any screen and folds them into something a human can actually read. Millions of points, sixty frames a second.',
+        'It runs entirely on the GPU, streaming geometry on demand and discarding everything the eye can\u2019t resolve. The result feels less like a chart and more like looking into deep space.'
+      ],
+      tech: ['WebGPU', 'Three.js', 'WebAssembly', 'Go', 'GLSL'],
+      highlights: ['Renders 4M points at 60fps', 'GPU-resident, zero main-thread jank', 'Powers three production analytics suites'],
+      links: [{ label: 'DEMO', href: '#' }, { label: 'WRITE-UP', href: '#' }]
+    };
+
+    const sideProjects = [
+      { tag: 'GENERATIVE', name: 'STATIC', desc: 'A toy that turns your cursor into living television snow.', year: '2025' },
+      { tag: 'CLI', name: 'REVENANT', desc: 'Resurrects dead git branches nobody meant to bury.', year: '2024' },
+      { tag: 'EXPERIMENT', name: 'PARALLAX', desc: 'Scroll-driven depth illusions that should not work, but do.', year: '2024' },
+      { tag: 'MICRO-LIB', name: 'GHOST.JS', desc: 'A 2kb framework that disappears completely at build time.', year: '2023' }
+    ];
+
+    const mk = (name, n) => ({ name, lvl: n + '/10', on: Array.from({ length: n }, () => ({})), off: Array.from({ length: 10 - n }, () => ({})) });
+    const skills = [
+      { name: 'LANGUAGES', items: [mk('JS / TS', 9), mk('Rust', 7), mk('Python', 8), mk('Go', 6), mk('SQL', 8)] },
+      { name: 'INTERFACE', items: [mk('React', 9), mk('WebGL', 7), mk('Canvas', 8), mk('CSS', 9), mk('Three.js', 6)] },
+      { name: 'SYSTEMS', items: [mk('Node', 9), mk('Postgres', 8), mk('Docker', 7), mk('AWS', 6), mk('Redis', 7)] }
+    ];
+
+    const experience = [
+      { period: '2024 \u2014 NOW', role: 'SENIOR DEVELOPER', org: '[ REDACTED ]', desc: 'Building systems that aren\u2019t supposed to be possible. Mostly succeeding.' },
+      { period: '2021 \u2014 2024', role: 'FULL-STACK DEVELOPER', org: 'NULLCORP', desc: 'Shipped the unshippable. Maintained the unmaintainable. Learned the rest the hard way.' },
+      { period: '2019 \u2014 2021', role: 'JUNIOR DEVELOPER', org: 'THE BASEMENT', desc: 'Where I first met the void. We\u2019ve been working together ever since.' }
+    ];
+
+    const chapters = this.CAPS.filter(c => c[1]).map(c => ({ label: c[1], pct: (c[0] / this.DUR * 100) + '%', go: () => this.jumpTo(c[0]) }));
+
+    return {
+      rootRef: this.rootRef, scanRef: this.scanRef, flickRef: this.flickRef, sweepRef: this.sweepRef,
+      bootRef: this.bootRef, heroRef: this.heroRef, navRef: this.navRef, chRef: this.chRef,
+      showSecRef: this.showSecRef, watchBtnRef: this.watchBtnRef,
+      projSecRef: this.projSecRef, blackoutRef: this.blackoutRef, fistLRef: this.fistLRef, fistRRef: this.fistRRef,
+      palmLRef: this.palmLRef, palmRRef: this.palmRRef, cardLRef: this.cardLRef, cardRRef: this.cardRRef,
+      chooseRef: this.chooseRef, railRef: this.railRef, trackRef: this.trackRef,
+      showRef: this.showRef, bhRef: this.bhRef, capTitleRef: this.capTitleRef, capBodyRef: this.capBodyRef, progRef: this.progRef,
+      starRef: this.starRef, gateRef: this.gateRef, capBoxRef: this.capBoxRef,
+      ambRef: this.ambRef, previewRef: this.previewRef, ppRef: this.ppRef, timeRef: this.timeRef, scrubRef: this.scrubRef,
+      beatLabelRef: this.beatLabelRef, scrubWrapRef: this.scrubWrapRef, dirARef: this.dirARef, dirBRef: this.dirBRef,
+      chapters,
+      navItems, pL, pR, sideProjects, skills, experience,
+      project: this.state.project, egg: this.state.egg,
+      sent: this.state.sent, notSent: !this.state.sent,
+      watched: this.state.watched, notWatched: !this.state.watched,
+      sndLabel: this.state.muted ? 'SND OFF' : 'SND ON',
+      openL: () => this.openProject(pL), openR: () => this.openProject(pR),
+      startShow: () => this.startShow(), skipShow: () => this.skipShow(),
+      toggleMute: () => this.toggleMute(), bugTap: () => this.bugTap(),
+      closeProject: () => this.closeProject(),
+      onContact: (e) => this.onContact(e), resetContact: () => this.resetContact(),
+      togglePlay: () => this.togglePlay(), prevBeat: () => this.prevBeat(), nextBeat: () => this.nextBeat(),
+      onScrub: (e) => this.onScrub(e), onScrubDown: () => this.onScrubDown(), onScrubUp: () => this.onScrubUp(),
+      setDirA: () => this.setDir('A'), setDirB: () => this.setDir('B')
+    };
+  }
+}
+</script>
+
+
+<main class="scanlines" aria-hidden="true"><div class="screen"><div class="overlay"></div></div></main>
+</body></html>
