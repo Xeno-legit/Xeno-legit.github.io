@@ -24,6 +24,8 @@
     'uniform float uInside;',
     'uniform float uFlash;',
     'uniform float uBgOnly;',
+    'uniform float uHiMode;',
+    'uniform float uHiAmt;',
     'const float RS = 1.0;',
     'const int   STEPS = 320;',
     'float hash(vec3 p){ p = fract(p*0.3183099 + vec3(0.71,0.113,0.419)); p *= 17.0; return fract(p.x*p.y*p.z*(p.x+p.y+p.z)); }',
@@ -76,6 +78,7 @@
     '  float h2 = dot(angmom, angmom);',
     '  vec3 col = vec3(0.0);',
     '  float transmit = 1.0;',
+    '  float hglow = 0.0;',
     '  bool captured = false;',
     '  for(int i=0;i<STEPS;i++){',
     '    float r2 = dot(pos,pos);',
@@ -83,6 +86,10 @@
     '    if(r < RS){ captured = true; break; }',
     '    if(r > 42.0 && dot(dir,pos) > 0.0) break;',
     '    float dt = clamp(r*0.075, 0.012, 0.55);',
+    '    if(uHiAmt > 0.001){',
+    '      if(uHiMode > 3.5 && uHiMode < 4.5) hglow += smoothstep(0.5, 0.0, abs(r - 1.5)) * dt * transmit;',
+    '      if(uHiMode > 4.5) hglow += smoothstep(0.2, 0.0, abs(r - 1.06)) * dt * transmit;',
+    '    }',
     '    vec3 accel = -uLens * 1.5 * h2 * pos / pow(r2, 2.5);',
     '    vec3 ndir = normalize(dir + accel*dt);',
     '    vec3 npos = pos + ndir*dt;',
@@ -109,6 +116,13 @@
     '        vec3 dcol = blackbody(tnorm);',
     '        dcol = mix(dcol, dcol*vec3(0.62,0.80,1.3), clamp(beta*2.2, 0.0, 0.65));',
     '        float emit = intensity * uDiskBright * beam * (0.5 + tnorm*3.2);',
+    '        if(uHiAmt > 0.001 && uHiMode > 0.5 && uHiMode < 3.5){',
+    '          float hi = 1.0;',
+    '          if(uHiMode > 1.5 && uHiMode < 2.5) hi = smoothstep(0.15, -0.3, dot(normalize(hit), normalize(uCamPos)));',
+    '          else if(uHiMode > 2.5) hi = clamp(beta*3.5, 0.0, 1.0);',
+    '          dcol = mix(dcol, vec3(1.0,0.10,0.08), hi*uHiAmt*0.8);',
+    '          emit *= 1.0 + hi*uHiAmt*0.7;',
+    '        }',
     '        col += transmit * dcol * emit;',
     '        transmit *= clamp(1.0 - intensity*1.15, 0.0, 1.0);',
     '      }',
@@ -117,6 +131,10 @@
     '    if(transmit < 0.02) break;',
     '  }',
     '  if(!captured) col += transmit * starfield(dir);',
+    '  if(uHiAmt > 0.001){',
+    '    col += vec3(1.0,0.12,0.08) * hglow * uHiAmt * 0.9;',
+    '    if(captured && uHiMode > 4.5) col += vec3(0.7,0.05,0.04) * uHiAmt * 0.45;',
+    '  }',
     '  if(uInside > 0.001){',
     '    float rr = length(uv);',
     '    float ang = atan(uv.y, uv.x);',
@@ -230,7 +248,7 @@
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
     this.uS = {}; this.uBl = {}; this.uC = {};
-    ['uRes', 'uTime', 'uCamPos', 'uCamMat', 'uFov', 'uDiskBright', 'uLens', 'uSpin', 'uDiskInner', 'uDiskOuter', 'uDisk', 'uInside', 'uFlash', 'uBgOnly']
+    ['uRes', 'uTime', 'uCamPos', 'uCamMat', 'uFov', 'uDiskBright', 'uLens', 'uSpin', 'uDiskInner', 'uDiskOuter', 'uDisk', 'uInside', 'uFlash', 'uBgOnly', 'uHiMode', 'uHiAmt']
       .forEach(function (n) { self.uS[n] = gl.getUniformLocation(self.progScene, n); });
     ['uTex', 'uTexel', 'uDir', 'uThreshold'].forEach(function (n) { self.uBl[n] = gl.getUniformLocation(self.progBlur, n); });
     ['uScene', 'uBloom', 'uRes', 'uBloomStr', 'uExposure'].forEach(function (n) { self.uC[n] = gl.getUniformLocation(self.progComp, n); });
@@ -291,7 +309,8 @@
     var up = cross(right, fwd);
     var mat = [right[0], right[1], right[2], up[0], up[1], up[2], fwd[0], fwd[1], fwd[2]];
 
-    var inner = 2.55, outer = 8.95;
+    var inner = o.diskInner != null ? o.diskInner : 2.55;
+    var outer = o.diskOuter != null ? o.diskOuter : 8.95;
 
     gl.useProgram(this.progScene);
     gl.bindFramebuffer(gl.FRAMEBUFFER, this.sceneTarget.fb);
@@ -310,6 +329,8 @@
     gl.uniform1f(this.uS.uInside, o.inside || 0);
     gl.uniform1f(this.uS.uFlash, o.flash || 0);
     gl.uniform1f(this.uS.uBgOnly, o.bgOnly ? 1.0 : 0.0);
+    gl.uniform1f(this.uS.uHiMode, o.hiMode || 0);
+    gl.uniform1f(this.uS.uHiAmt, o.hiAmt || 0);
     gl.bindVertexArray(this.vao);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 
